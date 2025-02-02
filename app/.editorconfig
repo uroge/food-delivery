@@ -1,0 +1,51 @@
+# Root flag to ensure the configuration is used for the entire project
+root = true
+
+# Kotlin files configuration (including KTS for Gradle)
+[*.{kt,kts}]
+# Set the indentation to 4 spaces for consistency with Android coding standards
+indent_size = 4
+# Define the maximum allowed line length (Android recommends 100, but 120 is common in many projects)
+max_line_length = 120
+
+# Ensure imports are ordered according to Android best practices
+ij_kotlin_imports_layout = *,java.**,javax.**,kotlin.**,android.**
+
+# Disallow wildcard imports (increases code clarity)
+ktlint_standard_no-wildcard-imports = enabled
+
+# Disable function naming rule to allow PascalCase for composables (Jetpack Compose)
+ktlint_standard_function-naming = disabled
+
+# Enforce the use of proper spacing in code (good for readability)
+ktlint_standard_spacing-around-operators = enabled
+ktlint_standard_spacing-after-comma = enabled
+ktlint_standard_spacing-before-comma = enabled
+
+# Require the use of `const` for constants, to prevent magic values
+ktlint_standard_no-magic-numbers = enabled
+
+# Enforce consistent use of blank lines for separation of code blocks
+ktlint_standard_no-blank-line-before-rbrace = enabled
+
+# Enforce the use of `isNullOrEmpty` and `isNotEmpty` instead of `size == 0` or `size > 0`
+ktlint_standard_is-empty = enabled
+
+# Disable the check for function names being camelCase (to support PascalCase for composables)
+ktlint_standard_function-naming = disabled
+
+# Avoid too many consecutive empty lines
+ktlint_standard_trailing-comma-on-call-site = enabled
+ktlint_standard_trailing-comma-in-declarations = enabled
+
+# Enforce the use of explicit type declarations when applicable (good for code clarity and type safety)
+ktlint_standard_explicit-type-declaration = enabled
+
+# Ensure no unnecessary semicolons
+ktlint_standard_no-semi = enabled
+
+# Code style for multiple statements on the same line (disallow for better readability)
+ktlint_standard_multiple-statements-per-line = disabled
+
+# Enforce consistent use of the `when` statement
+ktlint_standard_when-cased = enabled
