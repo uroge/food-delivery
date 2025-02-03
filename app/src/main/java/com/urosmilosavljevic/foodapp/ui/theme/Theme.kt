@@ -15,6 +15,7 @@ private val DarkColorScheme =
         primary = Purple80,
         secondary = PurpleGrey80,
         tertiary = Pink80,
+        background = Black,
     )
 
 private val LightColorScheme =
@@ -22,6 +23,7 @@ private val LightColorScheme =
         primary = Purple40,
         secondary = PurpleGrey40,
         tertiary = Pink40,
+        background = White,
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),
@@ -46,8 +48,7 @@ fun FoodAppTheme(
                 val context = LocalContext.current
                 if (darkTheme) {
                     dynamicDarkColorScheme(context)
-                }
-                else {
+                } else {
                     dynamicLightColorScheme(context)
                 }
             }
