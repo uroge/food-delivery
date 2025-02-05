@@ -6,12 +6,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.urosmilosavljevic.foodapp.ui.theme.FoodAppTheme
+import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
+import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 import android.os.Bundle
 
 class MainActivity : ComponentActivity() {
@@ -24,31 +22,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             FoodAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    FAButton(
+                        text = "Click me",
+                        onClick = {},
                         modifier = Modifier.padding(innerPadding),
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(
-    name: String,
-    modifier: Modifier = Modifier,
-) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    FoodAppTheme {
-        Greeting("Android")
     }
 }

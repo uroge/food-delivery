@@ -1,4 +1,4 @@
-package com.urosmilosavljevic.foodapp.ui.theme
+package com.urosmilosavljevic.foodapp.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
