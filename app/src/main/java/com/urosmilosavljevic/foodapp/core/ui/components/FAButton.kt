@@ -38,10 +38,7 @@ fun FAButton(
                     ),
                 shape = MaterialTheme.shapes.small,
             ) {
-                Text(
-                    text = text,
-                    style = MaterialTheme.typography.titleSmall,
-                )
+                FAButtonText(text = text)
             }
         FAButtonTypes.OUTLINED ->
             OutlinedButton(
@@ -50,22 +47,25 @@ fun FAButton(
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
                 shape = MaterialTheme.shapes.small,
             ) {
-                Text(
-                    text = text,
-                    style = MaterialTheme.typography.titleSmall,
-                )
+                FAButtonText(text = text)
             }
         FAButtonTypes.TEXT ->
             TextButton(
                 onClick = onClick,
                 modifier = modifier,
+                shape = MaterialTheme.shapes.small,
             ) {
-                Text(
-                    text = text,
-                    style = MaterialTheme.typography.titleSmall,
-                )
+                FAButtonText(text = text)
             }
     }
+}
+
+@Composable
+fun FAButtonText(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.titleSmall,
+    )
 }
 
 @Preview
