@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 
 enum class FAButtonTypes {
     FILLED,
@@ -70,5 +71,7 @@ fun FAButton(
 @Preview
 @Composable
 private fun FAButtonPreview() {
-    FAButton(text = "Click me".uppercase(), onClick = {}, type = FAButtonTypes.OUTLINED)
+    FoodAppTheme {
+        FAButton(text = "Click me".uppercase(), onClick = {}, type = FAButtonTypes.OUTLINED)
+    }
 }
