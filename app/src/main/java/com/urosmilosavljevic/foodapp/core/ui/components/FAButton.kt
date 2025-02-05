@@ -61,7 +61,7 @@ fun FAButton(
 }
 
 @Composable
-fun FAButtonText(text: String) {
+private fun FAButtonText(text: String) {
     Text(
         text = text,
         style = MaterialTheme.typography.titleSmall,
