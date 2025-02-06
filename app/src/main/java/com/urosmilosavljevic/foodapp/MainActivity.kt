@@ -3,15 +3,15 @@ package com.urosmilosavljevic.foodapp
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.urosmilosavljevic.foodapp.ui.theme.FoodAppTheme
+import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
+import com.urosmilosavljevic.foodapp.core.ui.components.FAButtonTypes
+import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 import android.os.Bundle
 
 class MainActivity : ComponentActivity() {
@@ -24,31 +24,27 @@ class MainActivity : ComponentActivity() {
         setContent {
             FoodAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
-                    )
+                    Column {
+                        FAButton(
+                            text = "Click me".uppercase(),
+                            onClick = {},
+                            modifier = Modifier.padding(innerPadding),
+                        )
+                        FAButton(
+                            text = "Click me",
+                            onClick = {},
+                            modifier = Modifier.padding(innerPadding),
+                            type = FAButtonTypes.TEXT,
+                        )
+                        FAButton(
+                            text = "Click me",
+                            onClick = {},
+                            modifier = Modifier.padding(innerPadding),
+                            type = FAButtonTypes.OUTLINED,
+                        )
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(
-    name: String,
-    modifier: Modifier = Modifier,
-) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    FoodAppTheme {
-        Greeting("Android")
     }
 }
