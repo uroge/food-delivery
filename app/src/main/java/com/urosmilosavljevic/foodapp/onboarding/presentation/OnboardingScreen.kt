@@ -80,7 +80,12 @@ private fun OnboardingScreen(
                 )
             }
         }
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(20.dp))
+        OnboardingStepIndicator(
+            currentPage = state.currentPage,
+            totalPages = state.totalPages + 1,
+        )
+        Spacer(modifier = Modifier.padding(32.dp))
         FAButton(
             text =
                 if (state.currentPage == state.totalPages) {
