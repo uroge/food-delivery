@@ -2,6 +2,7 @@ package com.urosmilosavljevic.foodapp.onboarding.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -42,66 +43,77 @@ private fun OnboardingScreen(
     onNext: () -> Unit,
     onSkip: () -> Unit,
 ) {
-    Column(
+    Box(
         modifier =
             Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
                 .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
     ) {
-        when (state.currentPage) {
-            0 -> {
-                OnboardingStepContent(
-                    image = painterResource(id = R.drawable.onboarding_step_1),
-                    title = "All your favourites",
-                    text =
-                        "Get all your loved foods in one once place,\n" +
-                            "you just place the order we do the rest",
-                )
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+            ) {
+                when (state.currentPage) {
+                    0 -> {
+                        OnboardingStepContent(
+                            image = painterResource(id = R.drawable.onboarding_step_1),
+                            title = "All your favourites",
+                            text =
+                                "Get all your loved foods in one once place,\n" +
+                                    "you just place the order we do the rest",
+                        )
+                    }
+                    1 -> {
+                        OnboardingStepContent(
+                            image = painterResource(id = R.drawable.onboarding_step_2),
+                            title = "Order from chosen chef",
+                            text =
+                                "Get all your loved foods in one once place,\n" +
+                                    "you just place the order we do the rest",
+                        )
+                    }
+                    2 -> {
+                        OnboardingStepContent(
+                            image = painterResource(id = R.drawable.onboarding_step_3),
+                            title = "Free delivery offers",
+                            text =
+                                "Get all your loved foods in one once place,\n" +
+                                    "you just place the order we do the rest",
+                        )
+                    }
+                }
             }
-            1 -> {
-                OnboardingStepContent(
-                    image = painterResource(id = R.drawable.onboarding_step_2),
-                    title = "Order from chosen chef",
-                    text =
-                        "Get all your loved foods in one once place,\n" +
-                            "you just place the order we do the rest",
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Bottom,
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                OnboardingStepIndicator(
+                    currentPage = state.currentPage,
+                    totalPages = state.totalPages + 1,
                 )
-            }
-            2 -> {
-                OnboardingStepContent(
-                    image = painterResource(id = R.drawable.onboarding_step_3),
-                    title = "Free delivery offers",
-                    text =
-                        "Get all your loved foods in one once place,\n" +
-                            "you just place the order we do the rest",
+                Spacer(modifier = Modifier.padding(vertical = 16.dp))
+                FAButton(
+                    text = if (state.currentPage == state.totalPages) "Get started".uppercase() else "Next".uppercase(),
+                    onClick = onNext,
+                    modifier = Modifier.fillMaxWidth(),
                 )
+                FAButton(
+                    text = "Skip",
+                    onClick = onSkip,
+                    type = FAButtonTypes.TEXT,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(modifier = Modifier.padding(vertical = 8.dp))
             }
         }
-        Spacer(modifier = Modifier.padding(20.dp))
-        OnboardingStepIndicator(
-            currentPage = state.currentPage,
-            totalPages = state.totalPages + 1,
-        )
-        Spacer(modifier = Modifier.padding(32.dp))
-        FAButton(
-            text =
-                if (state.currentPage == state.totalPages) {
-                    "Get started".uppercase()
-                } else {
-                    "Next".uppercase()
-                },
-            onClick = onNext,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        FAButton(
-            text = "Skip",
-            onClick = onSkip,
-            type = FAButtonTypes.TEXT,
-            modifier = Modifier.fillMaxWidth(),
-        )
     }
 }
 
