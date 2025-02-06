@@ -30,12 +30,5 @@ class OnboardingViewModel : ViewModel() {
 
     private fun handleSkip() {
         // TODO: Implement
-
-        // NOTE: Temp
-        if (state.value.currentPage == 0) {
-            return
-        }
-
-        _state.value = _state.value.copy(currentPage = _state.value.currentPage - 1)
     }
 }
