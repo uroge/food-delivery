@@ -32,15 +32,10 @@ fun OnboardingScreenRoot(
     OnboardingScreen(
         state = state,
         onNext = {
-            if (state.currentPage == state.totalPages) {
-                onOnboardingFinished()
-                // Save onboarding state to storage and navigate to login screen immediately on next launch
-            } else {
-                viewModel.onAction(OnboardingAction.OnNext)
-            }
+            viewModel.onAction(OnboardingAction.OnNext, onOnboardingFinished)
         },
         onSkip = {
-            viewModel.onAction(OnboardingAction.OnSkip)
+            viewModel.onAction(OnboardingAction.OnSkip, onOnboardingFinished)
         },
     )
 }
