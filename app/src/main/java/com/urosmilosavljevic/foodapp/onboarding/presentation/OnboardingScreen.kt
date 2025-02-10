@@ -23,13 +23,21 @@ import com.urosmilosavljevic.foodapp.core.ui.components.FAButtonTypes
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 
 @Composable
-fun OnboardingScreenRoot(viewModel: OnboardingViewModel) {
+fun OnboardingScreenRoot(
+    viewModel: OnboardingViewModel,
+    onOnboardingFinished: () -> Unit,
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     OnboardingScreen(
         state = state,
         onNext = {
-            viewModel.onAction(OnboardingAction.OnNext)
+            if (state.currentPage == state.totalPages) {
+                onOnboardingFinished()
+                // Save onboarding state to storage and navigate to login screen immediately on next launch
+            } else {
+                viewModel.onAction(OnboardingAction.OnNext)
+            }
         },
         onSkip = {
             viewModel.onAction(OnboardingAction.OnSkip)

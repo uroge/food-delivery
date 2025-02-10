@@ -20,11 +20,6 @@ class OnboardingViewModel : ViewModel() {
     }
 
     private fun handleNextPage() {
-        if (state.value.currentPage == state.value.totalPages) {
-            println("FINISHED")
-            return
-        }
-
         _state.value = _state.value.copy(currentPage = _state.value.currentPage + 1)
     }
 
