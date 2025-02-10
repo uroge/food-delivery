@@ -23,16 +23,19 @@ import com.urosmilosavljevic.foodapp.core.ui.components.FAButtonTypes
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 
 @Composable
-fun OnboardingScreenRoot(viewModel: OnboardingViewModel) {
+fun OnboardingScreenRoot(
+    viewModel: OnboardingViewModel,
+    onOnboardingFinished: () -> Unit,
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     OnboardingScreen(
         state = state,
         onNext = {
-            viewModel.onAction(OnboardingAction.OnNext)
+            viewModel.onAction(OnboardingAction.OnNext, onOnboardingFinished)
         },
         onSkip = {
-            viewModel.onAction(OnboardingAction.OnSkip)
+            viewModel.onAction(OnboardingAction.OnSkip, onOnboardingFinished)
         },
     )
 }
