@@ -73,6 +73,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.navigation.compose)
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.koin.compose)
+    implementation(libs.koin.navigation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
