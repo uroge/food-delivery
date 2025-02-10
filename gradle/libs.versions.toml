@@ -13,6 +13,7 @@ core-splashscreen = "1.0.1"
 navigationCompose = "2.8.6"
 kotlinSerialization = "1.8.0"
 datastorePreferences = "1.1.2"
+koin = "4.0.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,6 +32,8 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-core-splashscreen = { group = "androidx.core", name="core-splashscreen", version.ref = "core-splashscreen" }
 androidx-datastore-preferences = {group = "androidx.datastore", name="datastore-preferences", version.ref = "datastorePreferences"}
+koin-compose = {group = "io.insert-koin", name="koin-compose", version.ref = "koin"}
+koin-navigation = {group = "io.insert-koin", name="koin-androidx-compose-navigation", version.ref = "koin"}
 
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref= "navigationCompose"}
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerialization" }

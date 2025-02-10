@@ -3,10 +3,15 @@ package com.urosmilosavljevic.foodapp
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.urosmilosavljevic.foodapp.core.navigation.FAAppNavigation
 import com.urosmilosavljevic.foodapp.core.navigation.FARoute
+import com.urosmilosavljevic.foodapp.core.ui.components.SafeArea
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 import com.urosmilosavljevic.foodapp.onboarding.data.OnboardingPreferences
 import kotlinx.coroutines.flow.first
@@ -31,11 +36,18 @@ class MainActivity : ComponentActivity() {
 
             setContent {
                 FoodAppTheme {
-                    // TODO: Handle DI
-                    FAAppNavigation(
-                        startDestination,
-                        onboardingPreferences,
-                    )
+                    SafeArea { padding ->
+                        Column(
+                            modifier =
+                                Modifier
+                                    .fillMaxSize()
+                                    .padding(padding),
+                        ) {
+                            FAAppNavigation(
+                                startDestination,
+                            )
+                        }
+                    }
                 }
             }
         }
