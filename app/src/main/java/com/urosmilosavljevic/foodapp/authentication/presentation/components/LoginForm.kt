@@ -22,6 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.urosmilosavljevic.foodapp.authentication.presentation.LoginFormEvent
 import com.urosmilosavljevic.foodapp.authentication.presentation.LoginViewModel
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
+import com.urosmilosavljevic.foodapp.core.ui.components.FAButtonDensity
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButtonTypes
 import com.urosmilosavljevic.foodapp.core.ui.components.FACheckbox
 import com.urosmilosavljevic.foodapp.core.ui.components.FAInputField
@@ -87,11 +88,12 @@ fun LoginForm(onLoginSuccess: () -> Unit) {
                 text = "Forgot Password",
                 onClick = {},
                 type = FAButtonTypes.TEXT,
+                density = FAButtonDensity.LOW,
             )
         }
         Spacer(modifier = Modifier.height(12.dp))
         FAButton(
-            text = "Log in",
+            text = "Log in".uppercase(),
             onClick = {
                 viewModel.onEvent(LoginFormEvent.Submit)
             },
