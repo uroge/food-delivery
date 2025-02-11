@@ -125,7 +125,6 @@ private fun FAInputFieldPreview() {
         Column(
             modifier =
                 Modifier
-                    .height(200.dp)
                     .background(MaterialTheme.colorScheme.primary)
                     .fillMaxSize(),
             verticalArrangement = Arrangement.Center,
