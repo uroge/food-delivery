@@ -43,12 +43,7 @@ fun LoginForm(onLoginSuccess: () -> Unit) {
         }
     }
 
-    Column(
-        modifier =
-            Modifier
-                .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-    ) {
+    Column {
         FAInputField(
             placeholder = "example@gmail.com",
             value = state.email,
