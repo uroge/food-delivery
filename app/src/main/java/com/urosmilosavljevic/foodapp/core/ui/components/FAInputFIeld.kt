@@ -38,7 +38,7 @@ fun FAInputField(
     value: String = "",
     onChange: (String) -> Unit = { },
     label: String? = null,
-    isError: Boolean = false,
+    hasError: Boolean = false,
     errorMessage: String? = null,
     maxLength: Int? = null,
     isClearable: Boolean = false,
@@ -79,7 +79,7 @@ fun FAInputField(
                     keyboardType = if (passwordVisible) KeyboardType.Text else type,
                 ),
             shape = MaterialTheme.shapes.extraSmall,
-            isError = isError,
+            isError = hasError,
             trailingIcon = {
                 if (isPasswordInput) {
                     IconButton(onClick = { passwordVisible = !passwordVisible }) {
@@ -107,7 +107,7 @@ fun FAInputField(
                     VisualTransformation.None
                 },
         )
-        if (isError && errorMessage != null) {
+        if (hasError && errorMessage != null) {
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = errorMessage,

@@ -48,7 +48,7 @@ fun FACheckbox(
                         },
                     )
                     .background(if (checked) MaterialTheme.colorScheme.primary else Color.Transparent)
-                   .clickable { onCheckedChange(!checked) },
+                    .clickable { onCheckedChange(!checked) },
             contentAlignment = Alignment.Center,
         ) {
             if (checked) {

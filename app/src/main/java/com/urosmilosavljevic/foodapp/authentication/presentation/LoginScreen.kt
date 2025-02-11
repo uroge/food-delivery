@@ -1,7 +1,7 @@
 package com.urosmilosavljevic.foodapp.authentication.presentation
 
 import androidx.compose.runtime.Composable
-import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
+import com.urosmilosavljevic.foodapp.authentication.presentation.components.LoginForm
 
 @Composable
 fun LoginScreenRoot(onLoginSuccess: () -> Unit) {
@@ -10,8 +10,5 @@ fun LoginScreenRoot(onLoginSuccess: () -> Unit) {
 
 @Composable
 fun LoginScreen(onLoginSuccess: () -> Unit) {
-    FAButton(
-        text = "Go back",
-        onClick = onLoginSuccess,
-    )
+    LoginForm(onLoginSuccess)
 }
