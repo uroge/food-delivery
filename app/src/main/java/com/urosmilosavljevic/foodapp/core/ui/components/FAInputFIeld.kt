@@ -1,11 +1,13 @@
 package com.urosmilosavljevic.foodapp.core.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
@@ -33,7 +35,7 @@ import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 @Composable
 fun FAInputField(
     modifier: Modifier = Modifier,
-    type: KeyboardType = KeyboardType.Text,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     placeholder: String,
     value: String = "",
     onChange: (String) -> Unit = { },
@@ -42,8 +44,9 @@ fun FAInputField(
     errorMessage: String? = null,
     maxLength: Int? = null,
     isClearable: Boolean = false,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
 ) {
-    val isPasswordInput = type == KeyboardType.Password
+    val isPasswordInput = keyboardOptions.keyboardType == KeyboardType.Password
     var passwordVisible by remember { mutableStateOf(false) }
 
     Column {
@@ -61,7 +64,14 @@ fun FAInputField(
                     onChange(it)
                 }
             },
-            modifier = modifier,
+            modifier =
+                modifier.then(
+                    if (hasError) {
+                        Modifier.border(1.2.dp, MaterialTheme.colorScheme.error, MaterialTheme.shapes.extraSmall)
+                    } else {
+                        Modifier
+                    },
+                ),
             placeholder = { Text(text = placeholder) },
             colors =
                 TextFieldDefaults.colors(
@@ -73,10 +83,18 @@ fun FAInputField(
                     focusedPlaceholderColor = MaterialTheme.colorScheme.surfaceVariant,
                     focusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
                     unfocusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
+                    errorIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
+                    errorPlaceholderColor = MaterialTheme.colorScheme.error,
                 ),
             keyboardOptions =
                 KeyboardOptions(
-                    keyboardType = if (passwordVisible) KeyboardType.Text else type,
+                    imeAction = keyboardOptions.imeAction,
+                    keyboardType =
+                        if (passwordVisible) {
+                            KeyboardType.Text
+                        } else {
+                            keyboardOptions.keyboardType
+                        },
                 ),
             shape = MaterialTheme.shapes.extraSmall,
             isError = hasError,
@@ -106,6 +124,7 @@ fun FAInputField(
                 } else {
                     VisualTransformation.None
                 },
+            keyboardActions = keyboardActions,
         )
         if (hasError && errorMessage != null) {
             Spacer(modifier = Modifier.height(4.dp))
@@ -125,7 +144,7 @@ private fun FAInputFieldPreview() {
         Column(
             modifier =
                 Modifier
-                    .background(MaterialTheme.colorScheme.primary)
+                    .background(MaterialTheme.colorScheme.secondary)
                     .fillMaxSize(),
             verticalArrangement = Arrangement.Center,
         ) {
@@ -139,7 +158,9 @@ private fun FAInputFieldPreview() {
             FAInputField(
                 placeholder = "Password",
                 label = "Password",
-                type = KeyboardType.Password,
+                hasError = true,
+                errorMessage = "Password is required",
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             )
         }
     }
