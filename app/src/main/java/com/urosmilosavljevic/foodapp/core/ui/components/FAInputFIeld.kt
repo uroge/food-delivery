@@ -25,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -81,10 +82,11 @@ fun FAInputField(
                     unfocusedTextColor = MaterialTheme.colorScheme.onTertiary,
                     unfocusedPlaceholderColor = MaterialTheme.colorScheme.surfaceVariant,
                     focusedPlaceholderColor = MaterialTheme.colorScheme.surfaceVariant,
-                    focusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
-                    unfocusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
-                    errorIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    errorIndicatorColor = Color.Transparent,
                     errorPlaceholderColor = MaterialTheme.colorScheme.error,
+                    errorContainerColor = MaterialTheme.colorScheme.surface,
                 ),
             keyboardOptions =
                 KeyboardOptions(
