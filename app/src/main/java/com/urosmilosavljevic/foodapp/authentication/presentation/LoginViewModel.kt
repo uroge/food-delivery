@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val validateEmail: ValidateEmail = ValidateEmail(),
-    private val validatePassword: ValidatePassword = ValidatePassword(),
+    private val validateEmail: ValidateEmail,
+    private val validatePassword: ValidatePassword,
 ) : ViewModel() {
     var state by mutableStateOf(LoginFormState())
 

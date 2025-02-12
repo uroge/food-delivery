@@ -29,8 +29,10 @@ import com.urosmilosavljevic.foodapp.core.ui.components.FAInputField
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 
 @Composable
-fun LoginForm(onLoginSuccess: () -> Unit) {
-    val viewModel = viewModel<LoginViewModel>()
+fun LoginForm(
+    onLoginSuccess: () -> Unit,
+    viewModel: LoginViewModel,
+) {
     val state = viewModel.state
     val context = LocalContext.current
 
@@ -112,7 +114,7 @@ private fun LoginFormPreview() {
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background),
         ) {
-            LoginForm({})
+            LoginForm({}, viewModel())
         }
     }
 }

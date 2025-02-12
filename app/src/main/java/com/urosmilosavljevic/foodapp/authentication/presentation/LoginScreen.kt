@@ -13,17 +13,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.urosmilosavljevic.foodapp.authentication.domain.ValidateEmail
+import com.urosmilosavljevic.foodapp.authentication.domain.ValidatePassword
 import com.urosmilosavljevic.foodapp.authentication.presentation.components.AuthenticationScreenTitle
 import com.urosmilosavljevic.foodapp.authentication.presentation.components.LoginForm
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 
 @Composable
-fun LoginScreenRoot(onLoginSuccess: () -> Unit) {
-    LoginScreen(onLoginSuccess = onLoginSuccess)
+fun LoginScreenRoot(
+    onLoginSuccess: () -> Unit,
+    viewModel: LoginViewModel,
+) {
+    LoginScreen(
+        onLoginSuccess = onLoginSuccess,
+        viewModel = viewModel,
+    )
 }
 
 @Composable
-fun LoginScreen(onLoginSuccess: () -> Unit) {
+fun LoginScreen(
+    onLoginSuccess: () -> Unit,
+    viewModel: LoginViewModel,
+) {
     Column(
         modifier =
             Modifier
@@ -43,7 +54,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                     .background(MaterialTheme.colorScheme.background),
         ) {
             Box(modifier = Modifier.padding(24.dp)) {
-                LoginForm(onLoginSuccess)
+                LoginForm(onLoginSuccess, viewModel = viewModel)
             }
         }
     }
@@ -53,6 +64,13 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
 @Composable
 private fun LoginScreenPreview() {
     FoodAppTheme {
-        LoginScreen(onLoginSuccess = {})
+        LoginScreen(
+            onLoginSuccess = {},
+            viewModel =
+                LoginViewModel(
+                    validateEmail = ValidateEmail(),
+                    validatePassword = ValidatePassword(),
+                ),
+        )
     }
 }
