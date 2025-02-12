@@ -34,6 +34,7 @@ fun FAButton(
     modifier: Modifier = Modifier,
     type: FAButtonTypes = FAButtonTypes.FILLED,
     density: FAButtonDensity = FAButtonDensity.MEDIUM,
+    disabled: Boolean = false,
 ) {
     val paddingVertical =
         when (density) {
@@ -53,6 +54,7 @@ fun FAButton(
                         contentColor = MaterialTheme.colorScheme.onPrimary,
                     ),
                 shape = MaterialTheme.shapes.small,
+                enabled = !disabled,
             ) {
                 FAButtonText(text = text, paddingVertical = paddingVertical)
             }
@@ -62,6 +64,7 @@ fun FAButton(
                 modifier = modifier,
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
                 shape = MaterialTheme.shapes.small,
+                enabled = !disabled,
             ) {
                 FAButtonText(text = text, paddingVertical = paddingVertical)
             }
@@ -70,6 +73,7 @@ fun FAButton(
                 onClick = onClick,
                 modifier = modifier,
                 shape = MaterialTheme.shapes.small,
+                enabled = !disabled,
             ) {
                 FAButtonText(text = text, paddingVertical = paddingVertical)
             }
