@@ -3,6 +3,7 @@ package com.urosmilosavljevic.foodapp.authentication.shared
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,7 +19,7 @@ fun AuthenticationScreenLayout(
     title: String,
     subtitle: String,
     primaryContent: @Composable () -> Unit,
-    bottomContent: @Composable () -> Unit,
+    bottomContent: (@Composable () -> Unit)? = null,
 ) {
     Column(
         modifier =
@@ -35,7 +36,7 @@ fun AuthenticationScreenLayout(
                     .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
                     .background(
                         MaterialTheme.colorScheme.background,
-                    ),
+                    ).fillMaxHeight(),
         ) {
             Box(
                 modifier =
@@ -46,7 +47,7 @@ fun AuthenticationScreenLayout(
                     primaryContent()
                 }
             }
-            bottomContent()
+            bottomContent?.invoke()
         }
     }
 }
