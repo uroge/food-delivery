@@ -1,4 +1,4 @@
-package com.urosmilosavljevic.foodapp.authentication.presentation.components
+package com.urosmilosavljevic.foodapp.authentication.shared
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

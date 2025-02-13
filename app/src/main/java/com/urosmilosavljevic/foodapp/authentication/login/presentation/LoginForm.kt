@@ -1,4 +1,4 @@
-package com.urosmilosavljevic.foodapp.authentication.presentation.components
+package com.urosmilosavljevic.foodapp.authentication.login.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -24,8 +24,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.urosmilosavljevic.foodapp.authentication.presentation.LoginFormEvent
-import com.urosmilosavljevic.foodapp.authentication.presentation.LoginViewModel
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButtonDensity
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButtonTypes

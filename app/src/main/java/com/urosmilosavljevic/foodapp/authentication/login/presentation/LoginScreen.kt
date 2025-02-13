@@ -1,12 +1,11 @@
-package com.urosmilosavljevic.foodapp.authentication.presentation
+package com.urosmilosavljevic.foodapp.authentication.login.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.urosmilosavljevic.foodapp.authentication.domain.ValidateEmail
-import com.urosmilosavljevic.foodapp.authentication.domain.ValidatePassword
-import com.urosmilosavljevic.foodapp.authentication.presentation.components.AuthenticationScreenLayout
-import com.urosmilosavljevic.foodapp.authentication.presentation.components.LoginForm
-import com.urosmilosavljevic.foodapp.authentication.presentation.components.SignUpOptions
+import com.urosmilosavljevic.foodapp.authentication.login.domain.ValidateEmail
+import com.urosmilosavljevic.foodapp.authentication.login.domain.ValidatePassword
+import com.urosmilosavljevic.foodapp.authentication.shared.AuthenticationScreenLayout
+import com.urosmilosavljevic.foodapp.authentication.shared.SignUpOptions
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 
 @Composable

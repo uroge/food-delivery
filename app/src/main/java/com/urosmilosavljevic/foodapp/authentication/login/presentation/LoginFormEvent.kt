@@ -1,4 +1,4 @@
-package com.urosmilosavljevic.foodapp.authentication.presentation
+package com.urosmilosavljevic.foodapp.authentication.login.presentation
 
 sealed class LoginFormEvent {
     data class EmailChanged(

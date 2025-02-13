@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.urosmilosavljevic.foodapp.authentication.presentation.LoginScreenRoot
-import com.urosmilosavljevic.foodapp.authentication.presentation.LoginViewModel
+import com.urosmilosavljevic.foodapp.authentication.login.presentation.LoginScreenRoot
+import com.urosmilosavljevic.foodapp.authentication.login.presentation.LoginViewModel
 import com.urosmilosavljevic.foodapp.onboarding.presentation.OnboardingScreenRoot
 import com.urosmilosavljevic.foodapp.onboarding.presentation.OnboardingViewModel
 import org.koin.androidx.compose.koinViewModel

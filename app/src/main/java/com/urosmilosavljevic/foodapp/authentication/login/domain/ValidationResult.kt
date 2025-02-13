@@ -1,4 +1,4 @@
-package com.urosmilosavljevic.foodapp.authentication.domain
+package com.urosmilosavljevic.foodapp.authentication.login.domain
 
 data class ValidationResult(
     val successful: Boolean,

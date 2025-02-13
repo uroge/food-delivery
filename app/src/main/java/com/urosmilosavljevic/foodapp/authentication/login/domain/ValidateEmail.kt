@@ -1,4 +1,4 @@
-package com.urosmilosavljevic.foodapp.authentication.domain
+package com.urosmilosavljevic.foodapp.authentication.login.domain
 
 import android.util.Patterns
 
