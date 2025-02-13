@@ -42,7 +42,11 @@ fun FAAppNavigation(startDestination: FARoute) {
             )
         }
         composable<FARoute.SignUp> {
-            SignUpScreen()
+            SignUpScreen(
+                onGoBack = {
+                    navController.navigateUp()
+                },
+            )
         }
     }
 }

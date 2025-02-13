@@ -6,10 +6,11 @@ import com.urosmilosavljevic.foodapp.authentication.shared.AuthenticationScreenL
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(onGoBack: () -> Unit) {
     AuthenticationScreenLayout(
         title = "Sign Up",
         subtitle = "Please sign up to get started",
+        onGoBack = onGoBack,
         primaryContent = {
             SignupForm()
         },
@@ -20,6 +21,6 @@ fun SignUpScreen() {
 @Composable
 private fun SignUpScreenPreview() {
     FoodAppTheme {
-        SignUpScreen()
+        SignUpScreen(onGoBack = {})
     }
 }
