@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.urosmilosavljevic.foodapp.authentication.presentation.LoginScreenRoot
+import com.urosmilosavljevic.foodapp.authentication.presentation.LoginViewModel
 import com.urosmilosavljevic.foodapp.onboarding.presentation.OnboardingScreenRoot
 import com.urosmilosavljevic.foodapp.onboarding.presentation.OnboardingViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -13,7 +14,6 @@ import org.koin.androidx.compose.koinViewModel
 fun FAAppNavigation(startDestination: FARoute) {
     val navController = rememberNavController()
 
-    // TODO: Handle DI
     NavHost(
         navController = navController,
         startDestination = startDestination,
@@ -28,10 +28,12 @@ fun FAAppNavigation(startDestination: FARoute) {
             )
         }
         composable<FARoute.Login> {
+            val viewModel: LoginViewModel = koinViewModel()
             LoginScreenRoot(
                 onLoginSuccess = {
                     navController.navigateUp()
                 },
+                viewModel = viewModel,
             )
         }
     }
