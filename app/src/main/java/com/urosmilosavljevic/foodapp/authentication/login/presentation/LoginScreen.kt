@@ -11,17 +11,20 @@ import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 @Composable
 fun LoginScreenRoot(
     onLoginSuccess: () -> Unit,
+    onSignupClick: () -> Unit,
     viewModel: LoginViewModel,
 ) {
     LoginScreen(
         onLoginSuccess = onLoginSuccess,
         viewModel = viewModel,
+        onSignupClick = onSignupClick,
     )
 }
 
 @Composable
 fun LoginScreen(
     onLoginSuccess: () -> Unit,
+    onSignupClick: () -> Unit,
     viewModel: LoginViewModel,
 ) {
     AuthenticationScreenLayout(
@@ -31,7 +34,7 @@ fun LoginScreen(
             LoginForm(onLoginSuccess, viewModel = viewModel)
         },
         bottomContent = {
-            SignUpOptions()
+            SignUpOptions(onSignupClick)
         },
     )
 }
@@ -47,6 +50,7 @@ private fun LoginScreenPreview() {
                     validateEmail = ValidateEmail(),
                     validatePassword = ValidatePassword(),
                 ),
+            onSignupClick = {},
         )
     }
 }

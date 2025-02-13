@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.urosmilosavljevic.foodapp.authentication.login.presentation.LoginScreenRoot
 import com.urosmilosavljevic.foodapp.authentication.login.presentation.LoginViewModel
+import com.urosmilosavljevic.foodapp.authentication.signup.presentation.SignUpScreen
 import com.urosmilosavljevic.foodapp.onboarding.presentation.OnboardingScreenRoot
 import com.urosmilosavljevic.foodapp.onboarding.presentation.OnboardingViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -31,10 +32,17 @@ fun FAAppNavigation(startDestination: FARoute) {
             val viewModel: LoginViewModel = koinViewModel()
             LoginScreenRoot(
                 onLoginSuccess = {
+                    // TODO: Implement navigation to the next screen
                     navController.navigateUp()
                 },
                 viewModel = viewModel,
+                onSignupClick = {
+                    navController.navigate(FARoute.SignUp)
+                },
             )
+        }
+        composable<FARoute.SignUp> {
+            SignUpScreen()
         }
     }
 }
