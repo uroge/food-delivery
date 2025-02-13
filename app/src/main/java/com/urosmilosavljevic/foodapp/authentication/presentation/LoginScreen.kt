@@ -17,6 +17,7 @@ import com.urosmilosavljevic.foodapp.authentication.domain.ValidateEmail
 import com.urosmilosavljevic.foodapp.authentication.domain.ValidatePassword
 import com.urosmilosavljevic.foodapp.authentication.presentation.components.AuthenticationScreenTitle
 import com.urosmilosavljevic.foodapp.authentication.presentation.components.LoginForm
+import com.urosmilosavljevic.foodapp.authentication.presentation.components.SignUpOptions
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 
 @Composable
@@ -38,24 +39,29 @@ fun LoginScreen(
     Column(
         modifier =
             Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.secondary),
+                .fillMaxSize(),
     ) {
         AuthenticationScreenTitle(
             title = "Log In",
             subtitle = "Please sign in to your existing account",
         )
-        Box(
+        Column(
             modifier =
-                Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
-                    .background(MaterialTheme.colorScheme.background),
+                Modifier.clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                    .background(
+                        MaterialTheme.colorScheme.background,
+                    ),
         ) {
-            Box(modifier = Modifier.padding(24.dp)) {
-                LoginForm(onLoginSuccess, viewModel = viewModel)
+            Box(
+                modifier =
+                    Modifier
+                        .fillMaxWidth(),
+            ) {
+                Box(modifier = Modifier.padding(24.dp)) {
+                    LoginForm(onLoginSuccess, viewModel = viewModel)
+                }
             }
+            SignUpOptions()
         }
     }
 }

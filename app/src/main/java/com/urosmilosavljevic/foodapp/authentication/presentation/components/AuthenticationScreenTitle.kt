@@ -30,8 +30,9 @@ fun AuthenticationScreenTitle(
     Box(
         modifier =
             Modifier
-                .fillMaxWidth().background(MaterialTheme.colorScheme.secondary)
-                .height(300.dp),
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.secondary)
+                .height(260.dp),
     ) {
         Image(
             painter = painterResource(id = R.drawable.auth_screen_bg),
@@ -48,7 +49,6 @@ fun AuthenticationScreenTitle(
                     .fillMaxWidth()
                     .padding(
                         top = 120.dp,
-                        bottom = 70.dp,
                     ),
         ) {
             Text(
