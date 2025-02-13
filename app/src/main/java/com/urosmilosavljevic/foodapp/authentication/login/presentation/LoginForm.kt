@@ -72,7 +72,7 @@ fun LoginForm(
                     onNext = { focusManager.moveFocus(FocusDirection.Down) },
                 ),
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         FAInputField(
             placeholder = "Password",
             label = "Password",
