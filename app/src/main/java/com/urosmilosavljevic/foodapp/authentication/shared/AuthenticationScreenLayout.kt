@@ -1,12 +1,15 @@
-package com.urosmilosavljevic.foodapp.authentication.presentation.components
+package com.urosmilosavljevic.foodapp.authentication.shared
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,7 +21,8 @@ fun AuthenticationScreenLayout(
     title: String,
     subtitle: String,
     primaryContent: @Composable () -> Unit,
-    bottomContent: @Composable () -> Unit,
+    bottomContent: (@Composable () -> Unit)? = null,
+    onGoBack: (() -> Unit)? = null,
 ) {
     Column(
         modifier =
@@ -28,6 +32,7 @@ fun AuthenticationScreenLayout(
         AuthenticationScreenTitle(
             title = title,
             subtitle = subtitle,
+            onGoBack = onGoBack,
         )
         Column(
             modifier =
@@ -35,7 +40,8 @@ fun AuthenticationScreenLayout(
                     .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
                     .background(
                         MaterialTheme.colorScheme.background,
-                    ),
+                    ).fillMaxHeight()
+                    .verticalScroll(rememberScrollState()),
         ) {
             Box(
                 modifier =
@@ -46,7 +52,7 @@ fun AuthenticationScreenLayout(
                     primaryContent()
                 }
             }
-            bottomContent()
+            bottomContent?.invoke()
         }
     }
 }

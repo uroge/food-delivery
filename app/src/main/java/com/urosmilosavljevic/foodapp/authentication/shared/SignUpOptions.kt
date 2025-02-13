@@ -1,4 +1,4 @@
-package com.urosmilosavljevic.foodapp.authentication.presentation.components
+package com.urosmilosavljevic.foodapp.authentication.shared
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,9 +18,10 @@ import androidx.compose.ui.unit.dp
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButtonDensity
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButtonTypes
+import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 
 @Composable
-fun SignUpOptions() {
+fun SignUpOptions(onSignupClick: () -> Unit = {}) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -36,7 +37,7 @@ fun SignUpOptions() {
             FAButton(
                 text = "Sign Up".uppercase(),
                 onClick = {
-                    // TODO
+                    onSignupClick()
                 },
                 density = FAButtonDensity.LOW,
                 type = FAButtonTypes.TEXT,
@@ -52,12 +53,14 @@ fun SignUpOptions() {
 @Preview
 @Composable
 private fun SignUpOptionsPreview() {
-    Box(
-        modifier =
-            Modifier
-                .fillMaxWidth()
-                .background(color = Color.White),
-    ) {
-        SignUpOptions()
+    FoodAppTheme {
+        Box(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .background(color = Color.White),
+        ) {
+            SignUpOptions()
+        }
     }
 }

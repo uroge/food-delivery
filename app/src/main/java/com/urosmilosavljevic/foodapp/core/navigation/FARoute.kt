@@ -10,5 +10,8 @@ sealed interface FARoute {
     data object Login : FARoute
 
     @Serializable
+    data object SignUp : FARoute
+
+    @Serializable
     data object Home : FARoute
 }

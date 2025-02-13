@@ -1,12 +1,12 @@
-package com.urosmilosavljevic.foodapp.authentication.presentation
+package com.urosmilosavljevic.foodapp.authentication.login.presentation
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.urosmilosavljevic.foodapp.authentication.domain.ValidateEmail
-import com.urosmilosavljevic.foodapp.authentication.domain.ValidatePassword
+import com.urosmilosavljevic.foodapp.authentication.login.domain.ValidateEmail
+import com.urosmilosavljevic.foodapp.authentication.login.domain.ValidatePassword
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch

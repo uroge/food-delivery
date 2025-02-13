@@ -13,6 +13,7 @@ ij_kotlin_imports_layout = *,java.**,javax.**,kotlin.**,android.**
 
 # Disallow wildcard imports (increases code clarity)
 ktlint_standard_no-wildcard-imports = enabled
+ktlint_experimental_package-naming = disabled
 
 # Disable function naming rule to allow PascalCase for composables (Jetpack Compose)
 ktlint_standard_function-naming = disabled
