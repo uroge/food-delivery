@@ -1,7 +1,7 @@
-package com.urosmilosavljevic.foodapp.authentication.login.domain
+package com.urosmilosavljevic.foodapp.authentication.shared
 
-class ValidatePassword {
-    fun execute(password: String): ValidationResult {
+open class ValidatePassword {
+    open fun execute(password: String): ValidationResult {
         if (password.length < 8) {
             return ValidationResult(
                 successful = false,

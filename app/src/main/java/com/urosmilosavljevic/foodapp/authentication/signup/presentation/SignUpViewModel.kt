@@ -1,4 +1,4 @@
-package com.urosmilosavljevic.foodapp.authentication.login.presentation
+package com.urosmilosavljevic.foodapp.authentication.signup.presentation
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -7,58 +7,73 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.urosmilosavljevic.foodapp.authentication.shared.ValidateEmail
 import com.urosmilosavljevic.foodapp.authentication.shared.ValidatePassword
+import com.urosmilosavljevic.foodapp.authentication.signup.domain.ValidateConfirmPassword
+import com.urosmilosavljevic.foodapp.authentication.signup.domain.ValidateName
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-class LoginViewModel(
+class SignUpViewModel(
+    private val validateName: ValidateName,
     private val validateEmail: ValidateEmail,
     private val validatePassword: ValidatePassword,
+    private val validateConfirmPassword: ValidateConfirmPassword,
 ) : ViewModel() {
-    var state by mutableStateOf(LoginFormState())
+    var state by mutableStateOf(SignUpFormState())
 
     private val validationEventChannel = Channel<ValidationEvent>()
     val validationEvents = validationEventChannel.receiveAsFlow()
 
-    fun onEvent(event: LoginFormEvent) {
+    fun onEvent(event: SignupFormEvent) {
         when (event) {
-            is LoginFormEvent.EmailChanged -> {
+            is SignupFormEvent.NameChanged -> {
+                state = state.copy(name = event.name)
+            }
+            is SignupFormEvent.EmailChanged -> {
                 state = state.copy(email = event.email)
             }
-            is LoginFormEvent.PasswordChanged -> {
+            is SignupFormEvent.PasswordChanged -> {
                 state = state.copy(password = event.password)
             }
-            is LoginFormEvent.RememberMeChanged -> {
-                state = state.copy(rememberMe = event.shouldRemember)
+            is SignupFormEvent.ConfirmPasswordChanged -> {
+                state = state.copy(confirmPassword = event.confirmPassword)
             }
-            is LoginFormEvent.Submit -> {
+            is SignupFormEvent.Submit -> {
                 submitData()
             }
         }
     }
 
     private fun submitData() {
+        val nameResult = validateName.execute(state.name)
         val emailResult = validateEmail.execute(state.email)
         val passwordResult = validatePassword.execute(state.password)
+        val confirmPasswordResult = validateConfirmPassword.execute(state.confirmPassword, state.password)
 
         val hasError =
             listOf(
+                nameResult,
                 emailResult,
                 passwordResult,
+                confirmPasswordResult,
             ).any { !it.successful }
 
         if (hasError) {
             state =
                 state.copy(
+                    nameError = nameResult.errorMessage,
                     emailError = emailResult.errorMessage,
                     passwordError = passwordResult.errorMessage,
+                    confirmPasswordError = confirmPasswordResult.errorMessage,
                 )
             return
         } else {
             state =
                 state.copy(
+                    nameError = null,
                     emailError = null,
                     passwordError = null,
+                    confirmPasswordError = null,
                 )
         }
         viewModelScope.launch {
