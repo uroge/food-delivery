@@ -36,7 +36,8 @@ fun AuthenticationScreenLayout(
     Column(
         modifier =
             Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.secondary),
     ) {
         AuthenticationScreenTitle(
             title = title,
