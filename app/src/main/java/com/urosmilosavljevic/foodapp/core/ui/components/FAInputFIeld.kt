@@ -26,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -49,12 +50,14 @@ fun FAInputField(
 ) {
     val isPasswordInput = keyboardOptions.keyboardType == KeyboardType.Password
     var passwordVisible by remember { mutableStateOf(false) }
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Column {
         if (label != null) {
             Text(
                 label.uppercase(),
                 style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onBackground,
             )
             Spacer(modifier = Modifier.height(8.dp))
         }
@@ -80,8 +83,8 @@ fun FAInputField(
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     focusedTextColor = MaterialTheme.colorScheme.onSurface,
                     unfocusedTextColor = MaterialTheme.colorScheme.onTertiary,
-                    unfocusedPlaceholderColor = MaterialTheme.colorScheme.surfaceVariant,
-                    focusedPlaceholderColor = MaterialTheme.colorScheme.surfaceVariant,
+                    unfocusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    focusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     errorIndicatorColor = Color.Transparent,
@@ -107,7 +110,7 @@ fun FAInputField(
                             imageVector =
                                 if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
                             contentDescription = if (passwordVisible) "Hide password" else "Show password",
-                            tint = MaterialTheme.colorScheme.surfaceVariant,
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                     }
                 } else if (isClearable && value.isNotEmpty()) {
@@ -115,7 +118,7 @@ fun FAInputField(
                         Icon(
                             imageVector = Icons.Filled.Clear,
                             contentDescription = "Clear input",
-                            tint = MaterialTheme.colorScheme.surfaceVariant,
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                     }
                 }
@@ -126,7 +129,18 @@ fun FAInputField(
                 } else {
                     VisualTransformation.None
                 },
-            keyboardActions = keyboardActions,
+            keyboardActions =
+                KeyboardActions(
+                    onDone = {
+                        keyboardController?.hide()
+                        keyboardActions.onDone?.invoke(this)
+                    },
+                    onSearch = keyboardActions.onSearch?.let { { it() } },
+                    onNext = keyboardActions.onNext?.let { { it() } },
+                    onPrevious = keyboardActions.onPrevious?.let { { it() } },
+                    onSend = keyboardActions.onSend?.let { { it() } },
+                    onGo = keyboardActions.onGo?.let { { it() } },
+                ),
         )
         if (hasError && errorMessage != null) {
             Spacer(modifier = Modifier.height(4.dp))

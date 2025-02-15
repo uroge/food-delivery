@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,7 +33,7 @@ fun SignUpOptions(onSignupClick: () -> Unit = {}) {
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text("Don't have an account?")
+            Text("Don't have an account?", color = MaterialTheme.colorScheme.onBackground)
             Spacer(modifier = Modifier.width(4.dp))
             FAButton(
                 text = "Sign Up".uppercase(),
@@ -44,7 +45,7 @@ fun SignUpOptions(onSignupClick: () -> Unit = {}) {
             )
         }
         Spacer(modifier = Modifier.width(20.dp))
-        Text("Or")
+        Text("Or", color = MaterialTheme.colorScheme.onBackground)
         Spacer(modifier = Modifier.width(8.dp))
         SocialLoginButtons()
     }

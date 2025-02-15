@@ -13,12 +13,14 @@ private val DarkColorScheme =
         primaryContainer = OrangeLight,
         secondary = DarkBlue,
         onSecondary = White,
-        tertiary = Gray100,
-        onTertiary = DarkGrey,
+        tertiary = DarkGrey,
+        onTertiary = Gray100,
         background = DarkBlue,
         onBackground = Gray50,
-        surface = White,
-        onSurface = Gray400,
+        surface = DarkGrey,
+        onSurface = White,
+        surfaceVariant = DarkGrey,
+        onSurfaceVariant = Gray400,
     )
 
 private val LightColorScheme =
@@ -34,8 +36,8 @@ private val LightColorScheme =
         onBackground = DarkGrey,
         surface = Gray200,
         onSurface = Gray400,
-        surfaceVariant = Gray300,
-        onSurfaceVariant = DarkGrey,
+        surfaceVariant = DarkGrey,
+        onSurfaceVariant = Gray300,
     )
 
 @Composable

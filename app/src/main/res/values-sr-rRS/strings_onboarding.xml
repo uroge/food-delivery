@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_step_1_title">Svi tvoji omiljeni ukusi</string>
+    <string name="onboarding_step_1_subtitle">
+        Naruči sva svoja omiljena jela na jednom mestu – ti poruči, mi ostalo.
+    </string>
+    <string name="onboarding_step_2_title">Naruči od izabranog kuvara</string>
+    <string name="onboarding_step_2_subtitle">
+        Naruči sva svoja omiljena jela na jednom mestu – ti poruči, mi ostalo.
+    </string>
+    <string name="onboarding_step_3_title">Besplatna dostava u ponudi</string>
+    <string name="onboarding_step_3_subtitle">
+        Naruči sva svoja omiljena jela na jednom mestu – ti poruči, mi ostalo.
+    </string>
+    <string name="onboarding_finished_button_text">Započnite</string>
+</resources>

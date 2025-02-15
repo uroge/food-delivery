@@ -39,7 +39,7 @@ class OnboardingViewModel(
 
     private fun handleOnboardingFinish() {
         viewModelScope.launch {
-            preferences.setOnboardingCompleted(true)
+            preferences.setOnboardingCompleted()
         }
     }
 

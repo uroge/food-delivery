@@ -27,11 +27,13 @@ fun OnboardingStepContent(
         Text(
             text = title,
             style = MaterialTheme.typography.headlineMedium,
+            color = MaterialTheme.colorScheme.onBackground,
         )
         Spacer(modifier = Modifier.padding(8.dp))
         Text(
             text = text,
             style = MaterialTheme.typography.labelLarge,
+            color = MaterialTheme.colorScheme.onBackground,
         )
     }
 }

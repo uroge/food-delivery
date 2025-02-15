@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_screen_title">Log In</string>
+    <string name="login_screen_subtitle">Please sign in to your existing account</string>
+
+    <string name="input_name_label">Name</string>
+    <string name="input_name_placeholder">John Doe</string>
+
+    <string name="input_email_label">Email</string>
+    <string name="input_email_placeholder">Email</string>
+
+    <string name="input_password_label">Password</string>
+    <string name="input_password_placeholder">Password</string>
+
+    <string name="input_confirm_password_label">Re-Type Password</string>
+    <string name="input_confirm_password_placeholder">Re-Type Password</string>
+
+    <string name="remember_me_checkbox">Remember me</string>
+    <string name="forgot_password_link">Forgot Password</string>
+
+    <string name="login_button">Log In</string>
+
+    <string name="signup_prompt">Don’t have an account?</string>
+    <string name="signup_button">Sign Up</string>
+
+    <string name="divider_or">or</string>
+
+    <string name="sign_up_screen_title">Sign Up</string>
+    <string name="sign_up_screen_subtitle">Please sign up to get started</string>
+
+    <string name="sign_up_button">Sign Up</string>
+</resources>
