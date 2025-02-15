@@ -36,8 +36,8 @@ private val LightColorScheme =
         onBackground = DarkGrey,
         surface = Gray200,
         onSurface = Gray400,
-        surfaceVariant = Gray300,
-        onSurfaceVariant = DarkGrey,
+        surfaceVariant = DarkGrey,
+        onSurfaceVariant = Gray300,
     )
 
 @Composable
