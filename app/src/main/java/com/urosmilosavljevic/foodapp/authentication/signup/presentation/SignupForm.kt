@@ -16,11 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.urosmilosavljevic.foodapp.R
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
 import com.urosmilosavljevic.foodapp.core.ui.components.FAInputField
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
@@ -46,9 +48,9 @@ fun SignupForm(
 
     Column {
         FAInputField(
-            placeholder = "John Doe",
+            placeholder = stringResource(R.string.input_name_placeholder),
             value = state.name,
-            label = "Name",
+            label = stringResource(R.string.input_name_label),
             isClearable = true,
             modifier = Modifier.fillMaxWidth(),
             onChange = {
@@ -68,9 +70,9 @@ fun SignupForm(
         )
         Spacer(modifier = Modifier.height(20.dp))
         FAInputField(
-            placeholder = "example@gmail.com",
+            placeholder = stringResource(R.string.input_email_placeholder),
             value = state.email,
-            label = "Email",
+            label = stringResource(R.string.input_email_label),
             isClearable = true,
             modifier = Modifier.fillMaxWidth(),
             onChange = {
@@ -90,8 +92,8 @@ fun SignupForm(
         )
         Spacer(modifier = Modifier.height(20.dp))
         FAInputField(
-            placeholder = "Password",
-            label = "Password",
+            placeholder = stringResource(R.string.input_password_placeholder),
+            label = stringResource(R.string.input_password_label),
             value = state.password,
             modifier = Modifier.fillMaxWidth(),
             onChange = {
@@ -111,8 +113,8 @@ fun SignupForm(
         )
         Spacer(modifier = Modifier.height(20.dp))
         FAInputField(
-            placeholder = "Re-Type Password",
-            label = "Re-Type password",
+            placeholder = stringResource(R.string.input_confirm_password_placeholder),
+            label = stringResource(R.string.input_confirm_password_label),
             value = state.confirmPassword,
             keyboardOptions =
                 KeyboardOptions(
@@ -134,7 +136,7 @@ fun SignupForm(
         )
         Spacer(modifier = Modifier.height(32.dp))
         FAButton(
-            text = "Sign Up".uppercase(),
+            text = stringResource(R.string.signup_button).uppercase(),
             onClick = {
                 viewModel.onEvent(SignupFormEvent.Submit)
             },

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_screen_title">Prijavite se</string>
+    <string name="login_screen_subtitle">Molimo vas prijavite se na svoj postojeći nalog</string>
+
+    <string name="input_name_label">Ime</string>
+    <string name="input_name_placeholder">Petar Petrović</string>
+
+    <string name="input_email_label">Email</string>
+    <string name="input_email_placeholder">primer@gmail.com</string>
+
+    <string name="input_password_label">Lozinka</string>
+    <string name="input_password_placeholder">Lozinka</string>
+
+    <string name="input_confirm_password_label">Ponovo unesite lozinku</string>
+    <string name="input_confirm_password_placeholder">Ponovo unesite lozinku</string>
+
+    <string name="remember_me_checkbox">Zapamti me</string>
+    <string name="forgot_password_link">Zaboravili ste lozinku?</string>
+
+    <string name="login_button">Prijavite se</string>
+
+    <string name="signup_prompt">Nemate nalog?</string>
+    <string name="signup_button">Registrujte se</string>
+
+    <string name="divider_or">ili</string>
+
+    <string name="sign_up_screen_title">Registrujte se</string>
+    <string name="sign_up_screen_subtitle">Molimo vas registrujte se da biste započeli</string>
+
+    <string name="sign_up_button">Registrujte se</string>
+
+</resources>

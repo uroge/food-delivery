@@ -1,8 +1,10 @@
 package com.urosmilosavljevic.foodapp.authentication.signup.presentation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.urosmilosavljevic.foodapp.R
 import com.urosmilosavljevic.foodapp.authentication.shared.AuthenticationScreenLayout
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
 
@@ -13,8 +15,8 @@ fun SignUpScreen(
     viewModel: SignUpViewModel,
 ) {
     AuthenticationScreenLayout(
-        title = "Sign Up",
-        subtitle = "Please sign up to get started",
+        title = stringResource(R.string.sign_up_screen_title),
+        subtitle = stringResource(R.string.sign_up_screen_subtitle),
         onGoBack = onGoBack,
         primaryContent = {
             SignupForm(onSignupSuccess, viewModel)

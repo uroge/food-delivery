@@ -1,7 +1,9 @@
 package com.urosmilosavljevic.foodapp.authentication.login.presentation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.urosmilosavljevic.foodapp.R
 import com.urosmilosavljevic.foodapp.authentication.shared.AuthenticationScreenLayout
 import com.urosmilosavljevic.foodapp.authentication.shared.SignUpOptions
 import com.urosmilosavljevic.foodapp.authentication.shared.ValidateEmail
@@ -28,8 +30,8 @@ fun LoginScreen(
     viewModel: LoginViewModel,
 ) {
     AuthenticationScreenLayout(
-        title = "Log In",
-        subtitle = "Please sign in to your existing account",
+        title = stringResource(R.string.login_screen_title),
+        subtitle = stringResource(R.string.login_screen_subtitle),
         primaryContent = {
             LoginForm(onLoginSuccess, viewModel = viewModel)
         },
