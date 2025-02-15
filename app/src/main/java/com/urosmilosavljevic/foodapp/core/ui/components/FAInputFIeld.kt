@@ -55,6 +55,7 @@ fun FAInputField(
             Text(
                 label.uppercase(),
                 style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onBackground,
             )
             Spacer(modifier = Modifier.height(8.dp))
         }
@@ -80,8 +81,8 @@ fun FAInputField(
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     focusedTextColor = MaterialTheme.colorScheme.onSurface,
                     unfocusedTextColor = MaterialTheme.colorScheme.onTertiary,
-                    unfocusedPlaceholderColor = MaterialTheme.colorScheme.surfaceVariant,
-                    focusedPlaceholderColor = MaterialTheme.colorScheme.surfaceVariant,
+                    unfocusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    focusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     errorIndicatorColor = Color.Transparent,
