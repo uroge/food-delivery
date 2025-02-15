@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -66,28 +67,31 @@ private fun OnboardingScreen(
                     0 -> {
                         OnboardingStepContent(
                             image = painterResource(id = R.drawable.onboarding_step_1),
-                            title = "All your favourites",
+                            title = stringResource(R.string.onboarding_step_1_title),
                             text =
-                                "Get all your loved foods in one once place,\n" +
-                                    "you just place the order we do the rest",
+                                stringResource(
+                                    R.string.onboarding_step_1_subtitle,
+                                ),
                         )
                     }
                     1 -> {
                         OnboardingStepContent(
                             image = painterResource(id = R.drawable.onboarding_step_2),
-                            title = "Order from chosen chef",
+                            title = stringResource(R.string.onboarding_step_2_title),
                             text =
-                                "Get all your loved foods in one once place,\n" +
-                                    "you just place the order we do the rest",
+                                stringResource(
+                                    R.string.onboarding_step_2_subtitle,
+                                ),
                         )
                     }
                     2 -> {
                         OnboardingStepContent(
                             image = painterResource(id = R.drawable.onboarding_step_3),
-                            title = "Free delivery offers",
+                            title = stringResource(R.string.onboarding_step_3_title),
                             text =
-                                "Get all your loved foods in one once place,\n" +
-                                    "you just place the order we do the rest",
+                                stringResource(
+                                    R.string.onboarding_step_3_subtitle,
+                                ),
                         )
                     }
                 }
@@ -104,12 +108,19 @@ private fun OnboardingScreen(
                 )
                 Spacer(modifier = Modifier.padding(vertical = 16.dp))
                 FAButton(
-                    text = if (state.currentPage == state.totalPages) "Get started".uppercase() else "Next".uppercase(),
+                    text =
+                        if (state.currentPage ==
+                            state.totalPages
+                        ) {
+                            stringResource(R.string.onboarding_finished_button_text).uppercase()
+                        } else {
+                            stringResource(R.string.skip).uppercase()
+                        },
                     onClick = onNext,
                     modifier = Modifier.fillMaxWidth(),
                 )
                 FAButton(
-                    text = "Skip",
+                    text = stringResource(R.string.skip),
                     onClick = onSkip,
                     type = FAButtonTypes.TEXT,
                     modifier = Modifier.fillMaxWidth(),

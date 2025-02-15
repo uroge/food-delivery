@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_step_1_title">All your favourites</string>
+    <string name="onboarding_step_1_subtitle">
+        Get all your loved foods in one once place, you just place the order we do the rest
+    </string>
+    <string name="onboarding_step_2_title">Order from chosen chef</string>
+    <string name="onboarding_step_2_subtitle">
+        Get all your loved foods in one once place, you just place the order we do the rest
+    </string>
+    <string name="onboarding_step_3_title">Free delivery offers</string>
+    <string name="onboarding_step_3_subtitle">
+        Get all your loved foods in one once place, you just place the order we do the rest
+    </string>
+    <string name="onboarding_finished_button_text">Get started</string>
+</resources>
