@@ -1,4 +1,4 @@
-package com.urosmilosavljevic.foodapp.authentication.shared
+package com.urosmilosavljevic.foodapp.authentication.shared.domain
 
 open class ValidatePassword {
     open fun execute(password: String): ValidationResult {
