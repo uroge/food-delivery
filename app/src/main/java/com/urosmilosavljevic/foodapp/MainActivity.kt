@@ -4,6 +4,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.urosmilosavljevic.foodapp.authentication.shared.data.AuthRepository
 import com.urosmilosavljevic.foodapp.core.navigation.FAAppNavigation
 import com.urosmilosavljevic.foodapp.core.navigation.FARoute
 import com.urosmilosavljevic.foodapp.core.ui.components.SafeArea
@@ -14,6 +15,7 @@ import android.os.Bundle
 
 class MainActivity : ComponentActivity() {
     private val onboardingPreferences: OnboardingPreferences by inject()
+    private val authRepository: AuthRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +25,21 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         val isOnboardingCompleted = onboardingPreferences.isOnboardingCompleted()
-        val startDestination = if (isOnboardingCompleted) FARoute.Login else FARoute.Root
+        val user = authRepository.getCurrentUser()
+
+        val startDestination =
+            when {
+                !isOnboardingCompleted -> FARoute.Root
+                user != null -> FARoute.Home
+                else -> FARoute.Login
+            }
 
         setContent {
             FoodAppTheme {
                 SafeArea {
                     FAAppNavigation(
                         startDestination,
+                        authRepository,
                     )
                 }
             }

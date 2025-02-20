@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.jetbrains.kotlin.serialization)
+    alias(libs.plugins.google.services)
 }
 
 tasks.getByPath("preBuild").dependsOn("ktlintFormat")
@@ -76,6 +77,9 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.koin.compose)
     implementation(libs.koin.navigation)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

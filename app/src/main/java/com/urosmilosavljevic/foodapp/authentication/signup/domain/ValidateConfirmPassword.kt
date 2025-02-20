@@ -1,7 +1,7 @@
 package com.urosmilosavljevic.foodapp.authentication.signup.domain
 
-import com.urosmilosavljevic.foodapp.authentication.shared.ValidatePassword
-import com.urosmilosavljevic.foodapp.authentication.shared.ValidationResult
+import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidatePassword
+import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidationResult
 
 class ValidateConfirmPassword : ValidatePassword() {
     fun execute(

@@ -5,14 +5,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.urosmilosavljevic.foodapp.R
-import com.urosmilosavljevic.foodapp.authentication.shared.AuthenticationScreenLayout
+import com.urosmilosavljevic.foodapp.authentication.shared.presentation.AuthenticationScreenLayout
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SignUpScreen(
     onGoBack: () -> Unit,
     onSignupSuccess: () -> Unit,
-    viewModel: SignUpViewModel,
+    viewModel: SignUpViewModel = koinViewModel(),
 ) {
     AuthenticationScreenLayout(
         title = stringResource(R.string.sign_up_screen_title),
