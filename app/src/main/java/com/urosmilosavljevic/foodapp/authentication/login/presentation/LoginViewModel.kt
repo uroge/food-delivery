@@ -6,16 +6,16 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.urosmilosavljevic.foodapp.authentication.shared.data.AuthRepository
-import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidateEmail
-import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidatePassword
+import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidateEmailUseCase
+import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidatePasswordUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
     private val authRepository: AuthRepository,
-    private val validateEmail: ValidateEmail,
-    private val validatePassword: ValidatePassword,
+    private val validateEmailUseCase: ValidateEmailUseCase,
+    private val validatePasswordUseCase: ValidatePasswordUseCase,
 ) : ViewModel() {
     var state by mutableStateOf(LoginFormState())
 
@@ -40,8 +40,8 @@ class LoginViewModel(
     }
 
     private fun submitData() {
-        val emailResult = validateEmail.execute(state.email)
-        val passwordResult = validatePassword.execute(state.password)
+        val emailResult = validateEmailUseCase.execute(state.email)
+        val passwordResult = validatePasswordUseCase.execute(state.password)
 
         val hasError =
             listOf(

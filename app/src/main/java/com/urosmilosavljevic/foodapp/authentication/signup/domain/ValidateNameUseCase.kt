@@ -2,7 +2,7 @@ package com.urosmilosavljevic.foodapp.authentication.signup.domain
 
 import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidationResult
 
-class ValidateName {
+class ValidateNameUseCase {
     fun execute(name: String): ValidationResult {
         if (name.isBlank()) {
             return ValidationResult(

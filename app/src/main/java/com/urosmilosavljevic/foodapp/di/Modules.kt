@@ -3,10 +3,10 @@ package com.urosmilosavljevic.foodapp.di
 import com.google.firebase.auth.FirebaseAuth
 import com.urosmilosavljevic.foodapp.authentication.login.presentation.LoginViewModel
 import com.urosmilosavljevic.foodapp.authentication.shared.data.AuthRepository
-import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidateEmail
-import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidatePassword
-import com.urosmilosavljevic.foodapp.authentication.signup.domain.ValidateConfirmPassword
-import com.urosmilosavljevic.foodapp.authentication.signup.domain.ValidateName
+import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidateEmailUseCase
+import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidatePasswordUseCase
+import com.urosmilosavljevic.foodapp.authentication.signup.domain.ValidateConfirmPasswordUseCase
+import com.urosmilosavljevic.foodapp.authentication.signup.domain.ValidateNameUseCase
 import com.urosmilosavljevic.foodapp.authentication.signup.presentation.SignUpViewModel
 import com.urosmilosavljevic.foodapp.onboarding.data.OnboardingPreferences
 import com.urosmilosavljevic.foodapp.onboarding.presentation.OnboardingViewModel
@@ -22,10 +22,10 @@ val appModule =
         single { FirebaseAuth.getInstance() }
         single { AuthRepository(auth = get()) }
 
-        single { ValidateEmail() }
-        single { ValidatePassword() }
-        single { ValidateName() }
-        single { ValidateConfirmPassword() }
+        single { ValidateEmailUseCase() }
+        single { ValidatePasswordUseCase() }
+        single { ValidateNameUseCase() }
+        single { ValidateConfirmPasswordUseCase() }
         viewModelOf(::LoginViewModel)
         viewModelOf(::SignUpViewModel)
     }

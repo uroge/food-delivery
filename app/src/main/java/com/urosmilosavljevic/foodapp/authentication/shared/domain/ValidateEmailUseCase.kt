@@ -2,7 +2,7 @@ package com.urosmilosavljevic.foodapp.authentication.shared.domain
 
 import android.util.Patterns
 
-class ValidateEmail {
+class ValidateEmailUseCase {
     fun execute(email: String): ValidationResult {
         if (email.isBlank()) {
             return ValidationResult(
