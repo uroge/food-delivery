@@ -64,6 +64,7 @@ class LoginViewModel(
                 )
         }
         viewModelScope.launch {
+            state = state.copy(isLoading = true)
             val result = authRepository.login(state.email, state.password)
             result
                 .onSuccess { user ->
@@ -72,6 +73,7 @@ class LoginViewModel(
                 }.onFailure { error ->
                     println("Error $error")
                 }
+            state = state.copy(isLoading = false)
         }
     }
 

@@ -123,6 +123,7 @@ fun LoginForm(
             onClick = {
                 viewModel.onEvent(LoginFormEvent.Submit)
             },
+            isLoading = state.isLoading ?: false,
             modifier = Modifier.fillMaxWidth(),
         )
     }

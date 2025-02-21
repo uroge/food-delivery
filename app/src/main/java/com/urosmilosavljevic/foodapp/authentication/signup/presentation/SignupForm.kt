@@ -140,6 +140,7 @@ fun SignupForm(
             onClick = {
                 viewModel.onEvent(SignupFormEvent.Submit)
             },
+            isLoading = state.isLoading ?: false,
             modifier = Modifier.fillMaxWidth(),
         )
     }

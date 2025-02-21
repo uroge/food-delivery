@@ -17,6 +17,8 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -53,6 +55,11 @@ fun FAButton(
             FAButtonDensity.LOW -> 4.dp
         }
 
+    val shouldDisable =
+        remember {
+            derivedStateOf { disabled || isLoading }
+        }
+
     val buttonContent: @Composable () -> Unit = {
         Row(
             modifier = Modifier.height(IntrinsicSize.Min),
@@ -82,7 +89,7 @@ fun FAButton(
                         contentColor = MaterialTheme.colorScheme.onPrimary,
                     ),
                 shape = MaterialTheme.shapes.small,
-                enabled = !disabled,
+                enabled = !shouldDisable.value,
             ) {
                 buttonContent()
             }
@@ -92,7 +99,7 @@ fun FAButton(
                 modifier = modifier,
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
                 shape = MaterialTheme.shapes.small,
-                enabled = !disabled,
+                enabled = !shouldDisable.value,
             ) {
                 buttonContent()
             }
@@ -101,7 +108,7 @@ fun FAButton(
                 onClick = onClick,
                 modifier = modifier,
                 shape = MaterialTheme.shapes.small,
-                enabled = !disabled,
+                enabled = !shouldDisable.value,
             ) {
                 buttonContent()
             }

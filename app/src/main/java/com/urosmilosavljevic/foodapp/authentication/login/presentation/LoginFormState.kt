@@ -6,4 +6,5 @@ data class LoginFormState(
     val password: String = "",
     val passwordError: String? = null,
     val rememberMe: Boolean = false,
+    val isLoading: Boolean? = false,
 )
