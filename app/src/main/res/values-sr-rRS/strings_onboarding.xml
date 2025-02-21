@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="onboarding_primary_action_text">Dalje</string>
+    <string name="onboarding_secondary_action_text">Preskoči</string>
+    <string name="onboarding_finished_action_text">Završi</string>
     <string name="onboarding_step_1_title">Svi tvoji omiljeni ukusi</string>
     <string name="onboarding_step_1_subtitle">
         Naruči sva svoja omiljena jela na jednom mestu – ti poruči, mi ostalo.
