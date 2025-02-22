@@ -114,13 +114,13 @@ private fun OnboardingScreen(
                         ) {
                             stringResource(R.string.onboarding_finished_button_text).uppercase()
                         } else {
-                            stringResource(R.string.skip).uppercase()
+                            stringResource(R.string.onboarding_primary_action_text).uppercase()
                         },
                     onClick = onNext,
                     modifier = Modifier.fillMaxWidth(),
                 )
                 FAButton(
-                    text = stringResource(R.string.skip),
+                    text = stringResource(R.string.onboarding_secondary_action_text),
                     onClick = onSkip,
                     type = FAButtonTypes.TEXT,
                     modifier = Modifier.fillMaxWidth(),

@@ -62,8 +62,8 @@ fun LoginForm(
             onChange = {
                 viewModel.onEvent(LoginFormEvent.EmailChanged(it))
             },
-            hasError = state.emailError != null,
-            errorMessage = state.emailError,
+            hasError = state.emailErrorId != null,
+            errorMessage = state.emailErrorId?.let { stringResource(it) },
             keyboardOptions =
                 KeyboardOptions(
                     keyboardType = KeyboardType.Email,
@@ -88,8 +88,8 @@ fun LoginForm(
             onChange = {
                 viewModel.onEvent(LoginFormEvent.PasswordChanged(it))
             },
-            hasError = state.passwordError != null,
-            errorMessage = state.passwordError,
+            hasError = state.passwordErrorId != null,
+            errorMessage = state.passwordErrorId?.let { stringResource(it) },
             keyboardActions =
                 KeyboardActions(
                     onDone = {
@@ -123,6 +123,7 @@ fun LoginForm(
             onClick = {
                 viewModel.onEvent(LoginFormEvent.Submit)
             },
+            isLoading = state.isLoading ?: false,
             modifier = Modifier.fillMaxWidth(),
         )
     }

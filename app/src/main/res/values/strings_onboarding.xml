@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="onboarding_primary_action_text">Next</string>
+    <string name="onboarding_secondary_action_text">Skip</string>
+    <string name="onboarding_finished_action_text">Get started</string>
     <string name="onboarding_step_1_title">All your favourites</string>
     <string name="onboarding_step_1_subtitle">
         Get all your loved foods in one once place, you just place the order we do the rest

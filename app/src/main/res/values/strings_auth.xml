@@ -5,15 +5,21 @@
 
     <string name="input_name_label">Name</string>
     <string name="input_name_placeholder">John Doe</string>
+    <string name="input_name_blank_error">Name cannot be empty</string>
 
     <string name="input_email_label">Email</string>
     <string name="input_email_placeholder">Email</string>
+    <string name="input_email_blank_error">The email can\'t be blank</string>
+    <string name="input_email_invalid_error">That\'s not a valid email</string>
 
     <string name="input_password_label">Password</string>
     <string name="input_password_placeholder">Password</string>
+    <string name="input_password_length_error">The password needs to consist of at least 8 characters</string>
+    <string name="input_password_format_error">The password needs to contain at least one letter and digit</string>
 
     <string name="input_confirm_password_label">Re-Type Password</string>
     <string name="input_confirm_password_placeholder">Re-Type Password</string>
+    <string name="input_confirm_password_error">Passwords don\'t match</string>
 
     <string name="remember_me_checkbox">Remember me</string>
     <string name="forgot_password_link">Forgot Password</string>

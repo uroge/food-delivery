@@ -6,20 +6,20 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.urosmilosavljevic.foodapp.authentication.shared.data.AuthRepository
-import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidateEmail
-import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidatePassword
-import com.urosmilosavljevic.foodapp.authentication.signup.domain.ValidateConfirmPassword
-import com.urosmilosavljevic.foodapp.authentication.signup.domain.ValidateName
+import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidateEmailUseCase
+import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidatePasswordUseCase
+import com.urosmilosavljevic.foodapp.authentication.signup.domain.ValidateConfirmPasswordUseCase
+import com.urosmilosavljevic.foodapp.authentication.signup.domain.ValidateNameUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
     private val authRepository: AuthRepository,
-    private val validateName: ValidateName,
-    private val validateEmail: ValidateEmail,
-    private val validatePassword: ValidatePassword,
-    private val validateConfirmPassword: ValidateConfirmPassword,
+    private val validateNameUseCase: ValidateNameUseCase,
+    private val validateEmailUseCase: ValidateEmailUseCase,
+    private val validatePasswordUseCase: ValidatePasswordUseCase,
+    private val validateConfirmPassword: ValidateConfirmPasswordUseCase,
 ) : ViewModel() {
     var state by mutableStateOf(SignUpFormState())
 
@@ -47,9 +47,9 @@ class SignUpViewModel(
     }
 
     private fun submitData() {
-        val nameResult = validateName.execute(state.name)
-        val emailResult = validateEmail.execute(state.email)
-        val passwordResult = validatePassword.execute(state.password)
+        val nameResult = validateNameUseCase.execute(state.name)
+        val emailResult = validateEmailUseCase.execute(state.email)
+        val passwordResult = validatePasswordUseCase.execute(state.password)
         val confirmPasswordResult = validateConfirmPassword.execute(state.confirmPassword, state.password)
 
         val hasError =
@@ -63,22 +63,23 @@ class SignUpViewModel(
         if (hasError) {
             state =
                 state.copy(
-                    nameError = nameResult.errorMessage,
-                    emailError = emailResult.errorMessage,
-                    passwordError = passwordResult.errorMessage,
-                    confirmPasswordError = confirmPasswordResult.errorMessage,
+                    nameErrorId = nameResult.errorMessageId,
+                    emailErrorId = emailResult.errorMessageId,
+                    passwordErrorId = passwordResult.errorMessageId,
+                    confirmPasswordErrorId = confirmPasswordResult.errorMessageId,
                 )
             return
         } else {
             state =
                 state.copy(
-                    nameError = null,
-                    emailError = null,
-                    passwordError = null,
-                    confirmPasswordError = null,
+                    nameErrorId = null,
+                    emailErrorId = null,
+                    passwordErrorId = null,
+                    confirmPasswordErrorId = null,
                 )
         }
         viewModelScope.launch {
+            state = state.copy(isLoading = true)
             val result = authRepository.signUp(state.email, state.password, state.name)
             result
                 .onSuccess { user ->
@@ -87,6 +88,7 @@ class SignUpViewModel(
                 }.onFailure { error ->
                     println("Error $error")
                 }
+            state = state.copy(isLoading = false)
         }
     }
 
