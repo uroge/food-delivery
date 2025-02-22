@@ -5,15 +5,21 @@
 
     <string name="input_name_label">Ime</string>
     <string name="input_name_placeholder">Petar Petrović</string>
+    <string name="input_name_blank_error">Potrebno je uneti ime</string>
 
     <string name="input_email_label">Email</string>
     <string name="input_email_placeholder">primer@gmail.com</string>
+    <string name="input_email_blank_error">Potrebno je uneti email</string>
+    <string name="input_email_invalid_error">Email nije validan</string>
 
     <string name="input_password_label">Lozinka</string>
     <string name="input_password_placeholder">Lozinka</string>
+    <string name="input_password_length_error">Lozinka mora imati minimum 8 karaktera</string>
+    <string name="input_password_format_error">Lozinka mora imati bar jedno slovo i jedan broj</string>
 
     <string name="input_confirm_password_label">Ponovo unesite lozinku</string>
     <string name="input_confirm_password_placeholder">Ponovo unesite lozinku</string>
+    <string name="input_confirm_password_error">Lozinke se ne poklapaju</string>
 
     <string name="remember_me_checkbox">Zapamti me</string>
     <string name="forgot_password_link">Zaboravili ste lozinku?</string>
