@@ -63,19 +63,19 @@ class SignUpViewModel(
         if (hasError) {
             state =
                 state.copy(
-                    nameError = nameResult.errorMessage,
-                    emailError = emailResult.errorMessage,
-                    passwordError = passwordResult.errorMessage,
-                    confirmPasswordError = confirmPasswordResult.errorMessage,
+                    nameErrorId = nameResult.errorMessageId,
+                    emailErrorId = emailResult.errorMessageId,
+                    passwordErrorId = passwordResult.errorMessageId,
+                    confirmPasswordErrorId = confirmPasswordResult.errorMessageId,
                 )
             return
         } else {
             state =
                 state.copy(
-                    nameError = null,
-                    emailError = null,
-                    passwordError = null,
-                    confirmPasswordError = null,
+                    nameErrorId = null,
+                    emailErrorId = null,
+                    passwordErrorId = null,
+                    confirmPasswordErrorId = null,
                 )
         }
         viewModelScope.launch {

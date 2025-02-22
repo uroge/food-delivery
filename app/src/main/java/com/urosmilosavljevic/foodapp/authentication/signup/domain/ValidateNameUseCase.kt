@@ -1,5 +1,6 @@
 package com.urosmilosavljevic.foodapp.authentication.signup.domain
 
+import com.urosmilosavljevic.foodapp.R
 import com.urosmilosavljevic.foodapp.authentication.shared.domain.ValidationResult
 
 class ValidateNameUseCase {
@@ -7,7 +8,7 @@ class ValidateNameUseCase {
         if (name.isBlank()) {
             return ValidationResult(
                 successful = false,
-                errorMessage = "Name cannot be empty",
+                errorMessageId = R.string.input_name_blank_error,
             )
         }
         return ValidationResult(

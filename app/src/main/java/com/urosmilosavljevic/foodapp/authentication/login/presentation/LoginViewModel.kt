@@ -52,15 +52,15 @@ class LoginViewModel(
         if (hasError) {
             state =
                 state.copy(
-                    emailError = emailResult.errorMessage,
-                    passwordError = passwordResult.errorMessage,
+                    emailErrorId = emailResult.errorMessageId,
+                    passwordErrorId = passwordResult.errorMessageId,
                 )
             return
         } else {
             state =
                 state.copy(
-                    emailError = null,
-                    passwordError = null,
+                    emailErrorId = null,
+                    passwordErrorId = null,
                 )
         }
         viewModelScope.launch {

@@ -1,11 +1,13 @@
 package com.urosmilosavljevic.foodapp.authentication.shared.domain
 
+import com.urosmilosavljevic.foodapp.R
+
 open class ValidatePasswordUseCase {
     open fun execute(password: String): ValidationResult {
         if (password.length < 8) {
             return ValidationResult(
                 successful = false,
-                errorMessage = "The password needs to consist of at least 8 characters",
+                errorMessageId = R.string.input_password_length_error,
             )
         }
         val containsLettersAndDigits =
@@ -14,7 +16,7 @@ open class ValidatePasswordUseCase {
         if (!containsLettersAndDigits) {
             return ValidationResult(
                 successful = false,
-                errorMessage = "The password needs to contain at least one letter and digit",
+                errorMessageId = R.string.input_password_format_error,
             )
         }
         return ValidationResult(

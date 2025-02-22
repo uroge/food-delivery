@@ -1,5 +1,6 @@
 package com.urosmilosavljevic.foodapp.authentication.shared.domain
 
+import com.urosmilosavljevic.foodapp.R
 import android.util.Patterns
 
 class ValidateEmailUseCase {
@@ -7,13 +8,13 @@ class ValidateEmailUseCase {
         if (email.isBlank()) {
             return ValidationResult(
                 successful = false,
-                errorMessage = "The email can't be blank",
+                errorMessageId = R.string.input_email_blank_error,
             )
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             return ValidationResult(
                 successful = false,
-                errorMessage = "That's not a valid email",
+                errorMessageId = R.string.input_email_invalid_error,
             )
         }
         return ValidationResult(

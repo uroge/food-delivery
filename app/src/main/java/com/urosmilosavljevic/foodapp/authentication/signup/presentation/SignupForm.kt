@@ -56,8 +56,8 @@ fun SignupForm(
             onChange = {
                 viewModel.onEvent(SignupFormEvent.NameChanged(it))
             },
-            hasError = state.nameError != null,
-            errorMessage = state.nameError,
+            hasError = state.nameErrorId != null,
+            errorMessage = state.nameErrorId?.let { stringResource(it) },
             keyboardOptions =
                 KeyboardOptions(
                     keyboardType = KeyboardType.Text,
@@ -78,8 +78,8 @@ fun SignupForm(
             onChange = {
                 viewModel.onEvent(SignupFormEvent.EmailChanged(it))
             },
-            hasError = state.emailError != null,
-            errorMessage = state.emailError,
+            hasError = state.emailErrorId != null,
+            errorMessage = state.emailErrorId?.let { stringResource(it) },
             keyboardOptions =
                 KeyboardOptions(
                     keyboardType = KeyboardType.Email,
@@ -99,8 +99,8 @@ fun SignupForm(
             onChange = {
                 viewModel.onEvent(SignupFormEvent.PasswordChanged(it))
             },
-            hasError = state.passwordError != null,
-            errorMessage = state.passwordError,
+            hasError = state.passwordErrorId != null,
+            errorMessage = state.passwordErrorId?.let { stringResource(it) },
             keyboardOptions =
                 KeyboardOptions(
                     keyboardType = KeyboardType.Password,
@@ -125,8 +125,8 @@ fun SignupForm(
             onChange = {
                 viewModel.onEvent(SignupFormEvent.ConfirmPasswordChanged(it))
             },
-            hasError = state.confirmPasswordError != null,
-            errorMessage = state.confirmPasswordError,
+            hasError = state.confirmPasswordErrorId != null,
+            errorMessage = state.confirmPasswordErrorId?.let { stringResource(it) },
             keyboardActions =
                 KeyboardActions(
                     onDone = {
