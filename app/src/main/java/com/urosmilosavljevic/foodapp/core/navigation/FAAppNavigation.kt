@@ -1,14 +1,10 @@
 package com.urosmilosavljevic.foodapp.core.navigation
 
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,7 +14,7 @@ import com.urosmilosavljevic.foodapp.authentication.login.presentation.LoginView
 import com.urosmilosavljevic.foodapp.authentication.shared.data.AuthRepository
 import com.urosmilosavljevic.foodapp.authentication.signup.presentation.SignUpScreen
 import com.urosmilosavljevic.foodapp.authentication.signup.presentation.SignUpViewModel
-import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
+import com.urosmilosavljevic.foodapp.home.presentation.HomeScreen
 import com.urosmilosavljevic.foodapp.onboarding.presentation.OnboardingScreenRoot
 import com.urosmilosavljevic.foodapp.onboarding.presentation.OnboardingViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -29,6 +25,13 @@ fun FAAppNavigation(
     authRepository: AuthRepository,
 ) {
     val navController = rememberNavController()
+    val authState = authRepository.authState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(authState) {
+        if (authState == null) {
+            navigateOnSignOut(navController)
+        }
+    }
 
     NavHost(
         navController = navController,
@@ -80,26 +83,6 @@ fun FAAppNavigation(
             )
         }
     }
-}
-
-@Composable
-fun HomeScreen(onAction: () -> Unit) {
-    Text(
-        text = "Home Screen",
-        style = MaterialTheme.typography.headlineLarge,
-        color = MaterialTheme.colorScheme.onBackground,
-    )
-    Spacer(
-        modifier =
-            Modifier
-                .height(16.dp),
-    )
-    FAButton(
-        text = "Logout",
-        onClick = {
-            onAction()
-        },
-    )
 }
 
 private fun navigateOnSignOut(navController: NavController) {
