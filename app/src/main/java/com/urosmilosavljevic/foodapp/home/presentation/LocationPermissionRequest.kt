@@ -48,6 +48,7 @@ fun LocationPermissionRequest() {
                 text = "Access location".uppercase(),
                 onClick = {},
                 modifier = Modifier.fillMaxWidth(),
+                icon = painterResource(id = android.R.drawable.ic_menu_mylocation),
             )
             Spacer(
                 modifier = Modifier.height(32.dp),
