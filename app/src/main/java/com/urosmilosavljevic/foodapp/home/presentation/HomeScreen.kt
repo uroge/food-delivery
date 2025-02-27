@@ -9,13 +9,45 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.app.ActivityCompat
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
 import com.urosmilosavljevic.foodapp.services.LocationService
+import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+
+fun arePermissionsGranted(context: Context): Boolean {
+    val permissions =
+        arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+        )
+
+    return permissions.all {
+        ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+    }
+}
 
 @Composable
 fun HomeScreen(onAction: () -> Unit) {
     val context = LocalContext.current
+
+    when {
+        !arePermissionsGranted(context) -> {
+            LocationPermissionRequest()
+        }
+        else -> {
+            HomeScreenContent(context, onAction)
+        }
+    }
+}
+
+@Composable
+fun HomeScreenContent(
+    context: Context,
+    onAction: () -> Unit,
+) {
     Column {
         Text(
             text = "Home Screen",

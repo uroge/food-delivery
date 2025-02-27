@@ -1,5 +1,7 @@
 package com.urosmilosavljevic.foodapp.home.presentation
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,9 +25,29 @@ import androidx.compose.ui.unit.dp
 import com.urosmilosavljevic.foodapp.R
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
+import android.Manifest
 
 @Composable
 fun LocationPermissionRequest() {
+    val context = LocalContext.current
+
+    val permissions =
+        arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+        )
+
+    val launcher =
+        rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.RequestMultiplePermissions(),
+        ) { result ->
+            if (result.all { it.value }) {
+                println("PERMISSIONS GRANTED")
+            } else {
+                println("PERMISSIONS NOT GRANTED")
+            }
+        }
+
     Box(
         modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
     ) {
@@ -46,7 +69,9 @@ fun LocationPermissionRequest() {
             )
             FAButton(
                 text = "Access location".uppercase(),
-                onClick = {},
+                onClick = {
+                    launcher.launch(permissions)
+                },
                 modifier = Modifier.fillMaxWidth(),
                 icon = painterResource(id = android.R.drawable.ic_menu_mylocation),
             )
