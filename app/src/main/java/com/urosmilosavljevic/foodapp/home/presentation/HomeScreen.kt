@@ -1,20 +1,11 @@
 package com.urosmilosavljevic.foodapp.home.presentation
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
-import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
-import com.urosmilosavljevic.foodapp.services.LocationService
+import com.urosmilosavljevic.foodapp.authentication.shared.data.AuthRepository
 import android.Manifest
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 
 fun arePermissionsGranted(context: Context): Boolean {
@@ -30,7 +21,10 @@ fun arePermissionsGranted(context: Context): Boolean {
 }
 
 @Composable
-fun HomeScreen(onAction: () -> Unit) {
+fun HomeScreen(
+    onAction: () -> Unit,
+    authRepository: AuthRepository,
+) {
     val context = LocalContext.current
 
     when {
@@ -38,62 +32,62 @@ fun HomeScreen(onAction: () -> Unit) {
             LocationPermissionRequest()
         }
         else -> {
-            HomeScreenContent(context, onAction)
+            HomeScreenContent(context, user = authRepository.getCurrentUser())
         }
     }
 }
-
-@Composable
-fun HomeScreenContent(
-    context: Context,
-    onAction: () -> Unit,
-) {
-    Column {
-        Text(
-            text = "Home Screen",
-            style = MaterialTheme.typography.headlineLarge,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
-        Spacer(
-            modifier =
-                Modifier
-                    .height(16.dp),
-        )
-        FAButton(
-            text = "Logout",
-            onClick = {
-                onAction()
-            },
-        )
-        Spacer(
-            modifier =
-                Modifier
-                    .height(16.dp),
-        )
-        FAButton(
-            text = "Start Location Service",
-            onClick = {
-                val serviceIntent =
-                    Intent(context, LocationService::class.java).apply {
-                        action = LocationService.Actions.START.toString()
-                    }
-                context.startService(serviceIntent)
-            },
-        )
-        Spacer(
-            modifier =
-                Modifier
-                    .height(16.dp),
-        )
-        FAButton(
-            text = "Stop Location Service",
-            onClick = {
-                val serviceIntent =
-                    Intent(context, LocationService::class.java).apply {
-                        action = LocationService.Actions.STOP.toString()
-                    }
-                context.startService(serviceIntent)
-            },
-        )
-    }
-}
+//
+// @Composable
+// fun HomeScreenContent(
+//    context: Context,
+//    onAction: () -> Unit,
+// ) {
+//    Column {
+//        Text(
+//            text = "Home Screen",
+//            style = MaterialTheme.typography.headlineLarge,
+//            color = MaterialTheme.colorScheme.onBackground,
+//        )
+//        Spacer(
+//            modifier =
+//                Modifier
+//                    .height(16.dp),
+//        )
+//        FAButton(
+//            text = "Logout",
+//            onClick = {
+//                onAction()
+//            },
+//        )
+//        Spacer(
+//            modifier =
+//                Modifier
+//                    .height(16.dp),
+//        )
+//        FAButton(
+//            text = "Start Location Service",
+//            onClick = {
+//                val serviceIntent =
+//                    Intent(context, LocationService::class.java).apply {
+//                        action = LocationService.Actions.START.toString()
+//                    }
+//                context.startService(serviceIntent)
+//            },
+//        )
+//        Spacer(
+//            modifier =
+//                Modifier
+//                    .height(16.dp),
+//        )
+//        FAButton(
+//            text = "Stop Location Service",
+//            onClick = {
+//                val serviceIntent =
+//                    Intent(context, LocationService::class.java).apply {
+//                        action = LocationService.Actions.STOP.toString()
+//                    }
+//                context.startService(serviceIntent)
+//            },
+//        )
+//    }
+// }
