@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location_permission_icon_description">Ikonica za dozvolu lokacije</string>
+    <string name="access_location_button">Pristup lokaciji</string>
+    <string name="location_icon_description">Ikonica lokacije</string>
+    <string name="location_permission_message">APLIKACIJA ĆE PRISTUPITI VAŠOJ LOKACIJI SAMO DOK JE KORISTITE</string>
+
+    <string name="home_screen_greeting">Hej %1$s,</string>
+    <string name="home_screen_good_morning">Dobro jutro</string>
+    <string name="home_screen_good_afternoon">Dobar dan</string>
+    <string name="home_screen_good_evening">Dobro veče</string>
+
+    <string name="input_search_label">Pretraži jela, restorane</string>
+    <string name="input_search_placeholder">Pretraži jela, restorane</string>
+
+    <string name="home_all_categories">Sve kategorije</string>
+    <string name="home_open_restaurants">Otvoreni restorani</string>
+
+    <string name="search_icon_description">Pretraga</string>
+</resources>

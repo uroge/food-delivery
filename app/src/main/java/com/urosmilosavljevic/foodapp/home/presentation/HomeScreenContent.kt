@@ -17,11 +17,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.firebase.auth.FirebaseUser
@@ -30,6 +32,7 @@ import com.urosmilosavljevic.foodapp.core.ui.components.FAButton
 import com.urosmilosavljevic.foodapp.core.ui.components.FAButtonTypes
 import com.urosmilosavljevic.foodapp.core.ui.components.FAInputField
 import com.urosmilosavljevic.foodapp.core.ui.theme.FoodAppTheme
+import java.util.Calendar
 import android.content.Context
 
 @Composable
@@ -37,6 +40,14 @@ fun HomeScreenContent(
     context: Context,
     user: FirebaseUser?,
 ) {
+    val currentHour = remember { Calendar.getInstance().get(Calendar.HOUR_OF_DAY) }
+
+    val greetingText =
+        when {
+            currentHour < 12 -> stringResource(R.string.home_screen_good_morning)
+            currentHour < 18 -> stringResource(R.string.home_screen_good_afternoon)
+            else -> stringResource(R.string.home_screen_good_evening)
+        }
     Box(
         modifier =
             Modifier
@@ -52,12 +63,12 @@ fun HomeScreenContent(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = "Hey ${user.displayName}, ",
+                        text = stringResource(R.string.home_screen_greeting, user.displayName ?: ""),
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onBackground,
                     )
                     Text(
-                        "Good Afternoon",
+                        text = greetingText,
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onBackground,
                     )
@@ -65,28 +76,27 @@ fun HomeScreenContent(
             }
             Spacer(modifier = Modifier.height(32.dp))
             FAInputField(
-                label = "Search dishes, restaurants",
+                label = stringResource(R.string.input_search_label),
                 value = "",
                 onChange = {},
-                placeholder = "Search dishes, restaurants",
+                placeholder = stringResource(R.string.input_search_placeholder),
                 isClearable = true,
-                singleLine= true,
+                singleLine = true,
                 leadingIcon =
                     {
                         Icon(
                             painter = painterResource(id = R.drawable.search_icon),
-                            contentDescription = "Search",
+                            contentDescription = stringResource(R.string.search_icon_description),
                         )
                     },
             )
             Spacer(modifier = Modifier.height(32.dp))
             HomeScreenSectionTitle(
-                title = "All Categories",
+                title = stringResource(R.string.home_all_categories),
                 onAction = {},
             )
-            // OpenRestaurants
             HomeScreenSectionTitle(
-                title = "Open Restaurants",
+                title = stringResource(R.string.home_open_restaurants),
                 onAction = {},
             )
         }

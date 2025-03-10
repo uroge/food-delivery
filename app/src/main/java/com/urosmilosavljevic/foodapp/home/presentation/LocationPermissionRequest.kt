@@ -20,8 +20,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -32,8 +32,6 @@ import android.Manifest
 
 @Composable
 fun LocationPermissionRequest() {
-    val context = LocalContext.current
-
     val permissions =
         arrayOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -65,13 +63,13 @@ fun LocationPermissionRequest() {
         ) {
             Image(
                 painter = painterResource(id = R.drawable.location_permission_icon),
-                contentDescription = null,
+                contentDescription = stringResource(R.string.location_permission_icon_description),
             )
             Spacer(
                 modifier = Modifier.height(56.dp),
             )
             FAButton(
-                text = "Access location".uppercase(),
+                text = stringResource(R.string.access_location_button).uppercase(),
                 onClick = {
                     launcher.launch(permissions)
                 },
@@ -79,7 +77,7 @@ fun LocationPermissionRequest() {
                 icon = {
                     Image(
                         painter = painterResource(id = android.R.drawable.ic_menu_mylocation),
-                        contentDescription = "Location Icon",
+                        contentDescription = stringResource(R.string.location_icon_description),
                         modifier =
                             Modifier
                                 .size(24.dp)
@@ -92,7 +90,7 @@ fun LocationPermissionRequest() {
                 modifier = Modifier.height(32.dp),
             )
             Text(
-                "APP WILL ACCESS YOUR LOCATION ONLY WHILE USING THE APP",
+                text = stringResource(R.string.location_permission_message),
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center,

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location_permission_icon_description">Location Permission Icon</string>
+    <string name="access_location_button">Access location</string>
+    <string name="location_icon_description">Location Icon</string>
+    <string name="location_permission_message">APP WILL ACCESS YOUR LOCATION ONLY WHILE USING THE APP</string>
+
+    <string name="home_screen_greeting">Hey %1$s,</string>
+    <string name="home_screen_good_morning">Good morning</string>
+    <string name="home_screen_good_afternoon">Good afternoon</string>
+    <string name="home_screen_good_evening">Good evening</string>
+
+    <string name="input_search_label">Search dishes, restaurants</string>
+    <string name="input_search_placeholder">Search dishes, restaurants</string>
+
+    <string name="home_all_categories">All Categories</string>
+    <string name="home_open_restaurants">Open Restaurants</string>
+
+    <string name="search_icon_description">Search</string>
+</resources>
