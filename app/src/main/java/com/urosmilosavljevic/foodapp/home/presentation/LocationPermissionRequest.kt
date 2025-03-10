@@ -12,11 +12,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -73,14 +76,24 @@ fun LocationPermissionRequest() {
                     launcher.launch(permissions)
                 },
                 modifier = Modifier.fillMaxWidth(),
-                icon = painterResource(id = android.R.drawable.ic_menu_mylocation),
+                icon = {
+                    Image(
+                        painter = painterResource(id = android.R.drawable.ic_menu_mylocation),
+                        contentDescription = "Location Icon",
+                        modifier =
+                            Modifier
+                                .size(24.dp)
+                                .background(Color.White.copy(alpha = 0.2f), shape = CircleShape)
+                                .padding(4.dp),
+                    )
+                },
             )
             Spacer(
                 modifier = Modifier.height(32.dp),
             )
             Text(
                 "APP WILL ACCESS YOUR LOCATION ONLY WHILE USING THE APP",
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center,
             )

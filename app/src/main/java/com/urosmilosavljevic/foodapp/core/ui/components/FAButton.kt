@@ -1,6 +1,7 @@
 package com.urosmilosavljevic.foodapp.core.ui.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -14,7 +15,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -25,7 +25,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -53,7 +52,7 @@ fun FAButton(
     density: FAButtonDensity = FAButtonDensity.MEDIUM,
     disabled: Boolean = false,
     isLoading: Boolean = false,
-    icon: Painter? = null,
+    icon: @Composable (() -> Unit)? = null,
 ) {
     val paddingVertical =
         when (density) {
@@ -76,15 +75,7 @@ fun FAButton(
             FAButtonText(text = text, paddingVertical = paddingVertical)
             if (icon != null) {
                 Spacer(modifier = Modifier.width(8.dp))
-                Icon(
-                    painter = icon,
-                    contentDescription = "Location Icon",
-                    modifier =
-                        Modifier
-                            .size(24.dp)
-                            .background(Color.White.copy(alpha = 0.2f), shape = CircleShape)
-                            .padding(4.dp),
-                )
+                icon()
             }
             if (isLoading) {
                 Spacer(modifier = Modifier.width(8.dp))
@@ -125,7 +116,7 @@ fun FAButton(
         FAButtonTypes.TEXT ->
             TextButton(
                 onClick = onClick,
-                modifier = modifier,
+                modifier = modifier.padding(0.dp),
                 shape = MaterialTheme.shapes.small,
                 enabled = !shouldDisable.value,
             ) {
@@ -158,7 +149,17 @@ private fun FAButtonPreview() {
             onClick = {},
             type = FAButtonTypes.FILLED,
             isLoading = true,
-            icon = painterResource(id = android.R.drawable.ic_menu_mylocation),
+            icon = {
+                Image(
+                    painter = painterResource(id = android.R.drawable.ic_menu_mylocation),
+                    contentDescription = "Location Icon",
+                    modifier =
+                        Modifier
+                            .size(24.dp)
+                            .background(Color.White.copy(alpha = 0.2f), shape = CircleShape)
+                            .padding(4.dp),
+                )
+            },
         )
     }
 }

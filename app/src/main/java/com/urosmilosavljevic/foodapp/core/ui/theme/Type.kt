@@ -80,7 +80,7 @@ val Typography =
             TextStyle(
                 fontFamily = senFontFamily,
                 fontWeight = FontWeight.Normal,
-                fontSize = 16.sp,
+                fontSize = 20.sp,
                 letterSpacing = 0.sp,
             ),
         bodyMedium =
