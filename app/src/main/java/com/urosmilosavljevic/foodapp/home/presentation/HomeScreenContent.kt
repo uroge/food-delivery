@@ -70,6 +70,7 @@ fun HomeScreenContent(
                 onChange = {},
                 placeholder = "Search dishes, restaurants",
                 isClearable = true,
+                singleLine= true,
                 leadingIcon =
                     {
                         Icon(

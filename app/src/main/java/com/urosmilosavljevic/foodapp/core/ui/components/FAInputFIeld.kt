@@ -49,6 +49,7 @@ fun FAInputField(
     isClearable: Boolean = false,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     leadingIcon: @Composable (() -> Unit)? = null,
+    singleLine: Boolean = false,
 ) {
     val isPasswordInput = keyboardOptions.keyboardType == KeyboardType.Password
     var passwordVisible by remember { mutableStateOf(false) }
@@ -144,6 +145,7 @@ fun FAInputField(
                     onSend = keyboardActions.onSend?.let { { it() } },
                     onGo = keyboardActions.onGo?.let { { it() } },
                 ),
+            singleLine = singleLine,
         )
         if (hasError && errorMessage != null) {
             Spacer(modifier = Modifier.height(4.dp))
