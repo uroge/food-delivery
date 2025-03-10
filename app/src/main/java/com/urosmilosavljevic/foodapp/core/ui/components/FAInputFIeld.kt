@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -47,12 +48,13 @@ fun FAInputField(
     maxLength: Int? = null,
     isClearable: Boolean = false,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
+    leadingIcon: @Composable (() -> Unit)? = null,
 ) {
     val isPasswordInput = keyboardOptions.keyboardType == KeyboardType.Password
     var passwordVisible by remember { mutableStateOf(false) }
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    Column {
+    Column(modifier = Modifier.fillMaxWidth()) {
         if (label != null) {
             Text(
                 label.uppercase(),
@@ -69,13 +71,13 @@ fun FAInputField(
                 }
             },
             modifier =
-                modifier.then(
+                modifier.fillMaxWidth().let {
                     if (hasError) {
-                        Modifier.border(1.2.dp, MaterialTheme.colorScheme.error, MaterialTheme.shapes.extraSmall)
+                        it.border(1.2.dp, MaterialTheme.colorScheme.error, MaterialTheme.shapes.extraSmall)
                     } else {
-                        Modifier
-                    },
-                ),
+                        it
+                    }
+                },
             placeholder = { Text(text = placeholder) },
             colors =
                 TextFieldDefaults.colors(
@@ -103,6 +105,7 @@ fun FAInputField(
                 ),
             shape = MaterialTheme.shapes.extraSmall,
             isError = hasError,
+            leadingIcon = leadingIcon,
             trailingIcon = {
                 if (isPasswordInput) {
                     IconButton(onClick = { passwordVisible = !passwordVisible }) {
