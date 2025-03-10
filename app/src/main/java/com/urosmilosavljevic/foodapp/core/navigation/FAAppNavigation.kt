@@ -80,6 +80,7 @@ fun FAAppNavigation(
                     authRepository.logout()
                     navigateOnSignOut(navController)
                 },
+                authRepository = authRepository,
             )
         }
     }
